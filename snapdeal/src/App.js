@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      Snapdeal
+      <h1>Welcome to Snapdeal</h1>
     </div>
   );
 }
