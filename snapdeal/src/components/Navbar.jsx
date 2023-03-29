@@ -15,7 +15,7 @@ export const Navbar = () => {
           <p> Gift Cards </p>
           <p> Help Center</p>
           <p>Sell On Fashiondeal </p>
-          <p>Download App</p>
+          
         </div>
 
      </div>
