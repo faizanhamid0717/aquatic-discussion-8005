@@ -1,8 +1,8 @@
-
 import "./App.css";
 import { Navbar } from "./components/Navbar";
 
 import AllRoutes from "./components/AllRoutes";
+import Payment from "./Pages/Payment";
 // import Navbar from "./components/Navbar";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
       {/* <h1>Welcome to Snapdeal</h1> */}
       <Navbar />
       <AllRoutes />
+      <Payment />
     </div>
   );
 }
