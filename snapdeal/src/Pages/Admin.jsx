@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Flex, HStack, Input, Text } from "@chakra-ui/react";
 
 const Admin = () => {
+
   return (
     <Box>
       <Flex border="1px solid black" p="12px 20px" align="center">
@@ -19,6 +20,7 @@ const Admin = () => {
       </HStack>
     </Box>
   );
+
 };
 
 export default Admin;
