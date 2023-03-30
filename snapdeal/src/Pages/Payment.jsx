@@ -32,6 +32,7 @@ const Payment = () => {
           backgroundColor="#E40046"
           mt={8}
           // onClick={handleOrdered}
+          
         >
           PAY RS. {0}
         </Button>
