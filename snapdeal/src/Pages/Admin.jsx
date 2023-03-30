@@ -8,6 +8,7 @@ const Admin = () => {
         <Text p="12px 20px">Admin Navbar</Text>
         <Input type="search" placeholder="Search Product.." size="md" w="40%" />
       </Flex>
+      
       <HStack>
         <Flex w="25%" border="1px solid black" height="80vh">
           Side Panel
