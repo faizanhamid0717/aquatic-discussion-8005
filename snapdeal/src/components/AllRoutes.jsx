@@ -8,6 +8,7 @@ import Payment from "./../Pages/Payment";
 import Admin from "../Pages/Admin";
 import Cart from "./../Pages/Cart";
 import PageNotFound from "../Pages/PageNotFound";
+import Checkout from "./../Pages/Checkout";
 const AllRoutes = () => {
   return (
     <Routes>
@@ -18,6 +19,7 @@ const AllRoutes = () => {
       <Route path="/cart" element={<Cart />}></Route>
       <Route path="/payment" element={<Payment />}></Route>
       <Route path="/admin" element={<Admin />}></Route>
+      <Route path="/checkout" element={<Checkout />}></Route>
       <Route path="*" element={<PageNotFound />}></Route>
     </Routes>
   );
