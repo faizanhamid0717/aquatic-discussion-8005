@@ -3,14 +3,11 @@ import thunk from "redux-thunk";
 import { reducer as authReducer } from "./authReducer/reducer";
 import { reducer as productReducer } from "./productReducer/reducer";
 import { reducer as cartReducer } from "./cartReducer/reducer";
-const rootReducer = {
+const rootReducer = combineReducers({
   authReducer,
   productReducer,
   cartReducer,
-};
-export const store = legacy_createStore(
-  combineReducers(rootReducer),
-  applyMiddleware(thunk)
-);
+});
+export const store = legacy_createStore(rootReducer,applyMiddleware(thunk));
 
-console.log(store);
+// console.log("storedata",store);

@@ -611,7 +611,7 @@ const settings = {
             <Box
               key={index}
               height={'sm'}
-             
+              
               position="relative"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
@@ -626,12 +626,15 @@ const settings = {
                   position="absolute"
                   top="50%"
                   transform="translate(0, -50%)">
-                  <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                    {/* {card.title} */}
+                  <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color='#F7A200'>
+                    {card.title}
                   </Heading>
-                  <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                    {/* {card.text} */}
-                  </Text>
+                  <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color='#86B817'>
+                  ₹{card.price}
+                  </Heading>
+                  {/* <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
+                    {card.price}
+                  </Text> */}
                 </Stack>
               </Container>
             </Box>
