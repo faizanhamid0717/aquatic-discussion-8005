@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, HStack,  Input, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Input, Text } from "@chakra-ui/react";
 import AddLoginForm from "../components/AddLoginForm";
 
 const Admin = () => {
@@ -18,6 +18,7 @@ const Admin = () => {
         </Flex>
         <Flex w="75%" border="1px solid black" height="70vh">
           <Text>Main Box</Text>
+          <Input scr="" alt="" />
         </Flex>
       </HStack>
     </Box>
