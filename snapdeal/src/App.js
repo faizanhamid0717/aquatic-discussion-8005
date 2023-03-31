@@ -2,6 +2,8 @@ import "./App.css";
 import { Navbar } from "./components/Navbar";
 import AllRoutes from "./components/AllRoutes";
 // import Navbar from "./components/Navbar";
+import {Footer} from "./components/Footer"
+
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
       {/* <h1>Welcome to Snapdeal</h1> */}
       <Navbar />
       <AllRoutes />
+      <Footer/>
     </div>
   );
 }
