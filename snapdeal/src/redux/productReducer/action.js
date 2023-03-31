@@ -8,15 +8,15 @@ import {
   PRODUCT_REQUEST_PENDING,
 } from "./actionType";
 
-const API = "";
+const API = `http://localhost:9090/Add`;
 
 //For Getting The Data
 export const getProductFn = () => (dispatch) => {
   dispatch({ type: PRODUCT_REQUEST_PENDING });
 
-  return axios
-    .get(API)
+   axios.get(`http://localhost:9090/Add`)
     .then((res) => {
+      // console.log('res-data',res.data)
       dispatch({ type: GET_PRODUCT_REQUEST_SUCCESS, payload: res.data });
     })
     .catch((err) => {
