@@ -17,13 +17,7 @@ export default function AddLoginForm() {
 
   return (
     <>
-      <Button
-        onClick={onOpen}
-        w="100%"
-        m="10px"
-        colorScheme="blue"
-        color="white"
-      >
+      <Button onClick={onOpen} w="80%" m="10px" bg="#3F3F3F" color="white">
         ADD PRODUCT
       </Button>
 
@@ -41,7 +35,7 @@ export default function AddLoginForm() {
               <Input placeholder="Enter Product Discount" size="md" />
               <Input placeholder="Enter Product Star" size="md" />
               <Input placeholder="Enter Product DisPrice" size="md" />
-              <Button colorScheme="blue" color="white">
+              <Button bg="#3F3F3F" color="white">
                 ADD
               </Button>
             </Stack>

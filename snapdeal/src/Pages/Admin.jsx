@@ -41,7 +41,12 @@ const Admin = () => {
         <Text p="12px 20px">Admin Navbar</Text>
         <Input type="search" placeholder="Search Product.." size="md" w="40%" />
 
-        <IconButton aria-label="Search database" icon={<Search2Icon />} />
+        <IconButton
+          bg="#3F3F3F"
+          color="white"
+          aria-label="Search database"
+          icon={<Search2Icon />}
+        />
       </Flex>
 
       <HStack>
@@ -84,7 +89,8 @@ const Admin = () => {
                     <Text isTruncated>{el.title}</Text>
                     <HStack p={2} align={"center"} justify={"center"}>
                       <IconButton
-                        colorScheme="blue"
+                        bg="#3F3F3F"
+                        color="white"
                         aria-label="edit Product"
                         size="xs"
                         icon={<EditIcon />}
@@ -92,7 +98,8 @@ const Admin = () => {
                         onClick={onOpen}
                       />
                       <IconButton
-                        colorScheme="red"
+                        bg="#3F3F3F"
+                        color="white"
                         aria-label="delete Product"
                         size="xs"
                         icon={<DeleteIcon />}
@@ -109,7 +116,20 @@ const Admin = () => {
               <ModalHeader>Modal Title</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <Text>Modla Body</Text>
+                <Text>
+                  {/* Update Product from hare */}
+                  <Stack>
+                    <Input placeholder="Enter Product Name" size="md" />
+                    <Input placeholder="Enter Product Imange URL" size="md" />
+                    <Input placeholder="Enter Product Price" size="md" />
+                    <Input placeholder="Enter Product Discount" size="md" />
+                    <Input placeholder="Enter Product Star" size="md" />
+                    <Input placeholder="Enter Product DisPrice" size="md" />
+                    <Button bg="#3F3F3F" color="white">
+                      Edit
+                    </Button>
+                  </Stack>
+                </Text>
               </ModalBody>
             </ModalContent>
           </Modal>
