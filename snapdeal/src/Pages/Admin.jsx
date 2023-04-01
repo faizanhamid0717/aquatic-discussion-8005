@@ -7,8 +7,15 @@ import {
   IconButton,
   Image,
   Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
   SimpleGrid,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import AddLoginForm from "../components/AddLoginForm";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +23,7 @@ import { getProductFn } from "../redux/productReducer/action";
 import { Search2Icon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 
 const Admin = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const state = useSelector((state) => {
     return state.productReducer.product;
   });
@@ -36,7 +44,7 @@ const Admin = () => {
       </Flex>
 
       <HStack>
-        <Flex w="25%" border="1px solid black" height="70vh">
+        <Flex w="25%" border="1px solid black" height="78vh">
           <Text>Side Panel</Text>
           <AddLoginForm />
         </Flex>
@@ -44,7 +52,7 @@ const Admin = () => {
           w="75%"
           m="auto"
           border="1px solid black"
-          height="70vh"
+          height="78vh"
           overflowY="auto"
           css={{
             "&::-webkit-scrollbar": {
@@ -65,7 +73,7 @@ const Admin = () => {
               state.map((el) => {
                 return (
                   <Box border="1px solid black" w="190px">
-                    <Image src={el.image} />
+                    <Image src={el.image} alt={el.title} />
                     <Text>{el.title}</Text>
 
                     <IconButton
@@ -74,6 +82,7 @@ const Admin = () => {
                       size="xs"
                       icon={<EditIcon />}
                       w={9}
+                      onClick={onOpen}
                     />
                     <IconButton
                       colorScheme="red"
@@ -86,6 +95,16 @@ const Admin = () => {
                 );
               })}
           </SimpleGrid>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Modal Title</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <Text>Modla Body</Text>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
         </Box>
       </HStack>
     </Box>
