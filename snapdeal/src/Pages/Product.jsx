@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {useSelector,useDispatch} from 'react-redux'
 import { getProductFn } from "../redux/productReducer/action";
 import "./Product.css"
@@ -9,16 +9,51 @@ import {
   RangeSliderThumb,
 } from '@chakra-ui/react'
 import ProductCart from "./ProductCard";
+import { Footer } from "../components/Footer";
+import { useSearchParams } from "react-router-dom";
 
 const Product = () => {
+  const [searchParam,setSearchParam]=useSearchParams()
+  const initialCategory=searchParam.getAll('category')
+  const [category,setCategory]=useState(initialCategory||[])
+  const initialOrder=searchParam.get('order')
+  const [order,setOrder]=useState(initialOrder||'')
   const data=useSelector((store)=>store.productReducer.product
   )
   console.log('products',data)
   const dispatch=useDispatch()
 
+ const handelFilter=(e)=>{
+       let newCategory=[...category]
+       const value=e.target.value
+     
+       if(newCategory.includes(value)){
+        newCategory=newCategory.filter((ele)=>ele !== value)
+       }else{
+        newCategory.push(value)
+       }
+        setCategory(newCategory)
+        console.log(category)
+    }
+
+  const handelSort=(e)=>{
+    console.log(e.target.value)
+    setOrder(e.target.value)
+}
+useEffect(()=>{
+   let params={
+       category
+   }
+   order&&(params.order=order)
+   setSearchParam(params)
+},[category,order])
+
+
   useEffect(()=>{
      dispatch(getProductFn())
   },[])
+
+
 
   return <div>
         
@@ -266,13 +301,15 @@ const Product = () => {
               <p style={{paddingTop:'10px',paddingRight:'35px',color:'gray'}}>(1250)</p>
             </div>
 
-            <div style={{border:"1px solid gray",width:'250px',height:'45px',paddingTop:'6px',marginTop:'8px',borderRadius:'5px',marginLeft:'200px'}}>
-              <label>Sort by :</label>
-                <select>
-                    <option>Price</option>
-                    <option>Price (High To Low)</option>
-                    <option>Price (Low To High)</option>
-                </select>
+            <div onChange={handelSort} style={{border:"1px solid gray",width:'430px',height:'40px',paddingTop:'6px',marginTop:'8px',borderRadius:'5px',marginLeft:'200px'}}>
+              <label>Sort by : </label>
+                
+                    <input type={'radio'} name='order' value='asc' defaultChecked={order='asc'}/>
+                    <label> Price (Low To High) </label>  
+                    
+                    |  <input  type={'radio'} name='order' value='desc' defaultChecked={order='desc'}/>
+                     <label > Price (High To Low)</label>
+                
             </div>
          </div>
 
@@ -282,8 +319,11 @@ const Product = () => {
              <ProductCart {...ele} key={ele.id}/>
           )}
           </div> 
+          
       </div>
+      
      </div>
+     {/* <Footer/> */}
 
 
 
