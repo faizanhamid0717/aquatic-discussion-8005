@@ -14,6 +14,7 @@ import {
   ModalHeader,
   ModalOverlay,
   SimpleGrid,
+  Stack,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -44,14 +45,14 @@ const Admin = () => {
       </Flex>
 
       <HStack>
-        <Flex w="25%" border="1px solid black" height="78vh">
+        <Flex w="25%" height="78vh">
           <Text>Side Panel</Text>
           <AddLoginForm />
         </Flex>
         <Box
           w="75%"
           m="auto"
-          border="1px solid black"
+          // border="1px solid black"
           height="78vh"
           overflowY="auto"
           css={{
@@ -68,29 +69,36 @@ const Admin = () => {
         >
           <Text>Main Box</Text>
 
-          <SimpleGrid columns={5} spacing={3} w="100%" align="center">
+          <SimpleGrid
+            columns={5}
+            spacing={3}
+            w="100%"
+            align="center"
+            justify={"center"}
+          >
             {state.length > 0 &&
               state.map((el) => {
                 return (
-                  <Box border="1px solid black" w="190px">
-                    <Image src={el.image} alt={el.title} />
-                    <Text>{el.title}</Text>
-
-                    <IconButton
-                      colorScheme="blue"
-                      aria-label="edit Product"
-                      size="xs"
-                      icon={<EditIcon />}
-                      w={9}
-                      onClick={onOpen}
-                    />
-                    <IconButton
-                      colorScheme="red"
-                      aria-label="delete Product"
-                      size="xs"
-                      icon={<DeleteIcon />}
-                      w={9}
-                    />
+                  <Box border="1px solid grey" p={2}>
+                    <Image src={el.image} alt={el.title} w="100%" h="300px" />
+                    <Text isTruncated>{el.title}</Text>
+                    <HStack p={2} align={"center"} justify={"center"}>
+                      <IconButton
+                        colorScheme="blue"
+                        aria-label="edit Product"
+                        size="xs"
+                        icon={<EditIcon />}
+                        w={9}
+                        onClick={onOpen}
+                      />
+                      <IconButton
+                        colorScheme="red"
+                        aria-label="delete Product"
+                        size="xs"
+                        icon={<DeleteIcon />}
+                        w={9}
+                      />
+                    </HStack>
                   </Box>
                 );
               })}
