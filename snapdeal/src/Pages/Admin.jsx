@@ -14,6 +14,7 @@ import {
   ModalHeader,
   ModalOverlay,
   SimpleGrid,
+  Stack,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -40,18 +41,23 @@ const Admin = () => {
         <Text p="12px 20px">Admin Navbar</Text>
         <Input type="search" placeholder="Search Product.." size="md" w="40%" />
 
-        <IconButton aria-label="Search database" icon={<Search2Icon />} />
+        <IconButton
+          bg="#3F3F3F"
+          color="white"
+          aria-label="Search database"
+          icon={<Search2Icon />}
+        />
       </Flex>
 
       <HStack>
-        <Flex w="25%" border="1px solid black" height="78vh">
+        <Flex w="25%" height="78vh">
           <Text>Side Panel</Text>
           <AddLoginForm />
         </Flex>
         <Box
           w="75%"
           m="auto"
-          border="1px solid black"
+          // border="1px solid black"
           height="78vh"
           overflowY="auto"
           css={{
@@ -68,29 +74,38 @@ const Admin = () => {
         >
           <Text>Main Box</Text>
 
-          <SimpleGrid columns={5} spacing={3} w="100%" align="center">
+          <SimpleGrid
+            columns={5}
+            spacing={3}
+            w="100%"
+            align="center"
+            justify={"center"}
+          >
             {state.length > 0 &&
               state.map((el) => {
                 return (
-                  <Box border="1px solid black" w="190px">
-                    <Image src={el.image} alt={el.title} />
-                    <Text>{el.title}</Text>
-
-                    <IconButton
-                      colorScheme="blue"
-                      aria-label="edit Product"
-                      size="xs"
-                      icon={<EditIcon />}
-                      w={9}
-                      onClick={onOpen}
-                    />
-                    <IconButton
-                      colorScheme="red"
-                      aria-label="delete Product"
-                      size="xs"
-                      icon={<DeleteIcon />}
-                      w={9}
-                    />
+                  <Box border="1px solid grey" p={2} key={el.id}>
+                    <Image src={el.image} alt={el.title} w="100%" h="300px" />
+                    <Text isTruncated>{el.title}</Text>
+                    <HStack p={2} align={"center"} justify={"center"}>
+                      <IconButton
+                        bg="#3F3F3F"
+                        color="white"
+                        aria-label="edit Product"
+                        size="xs"
+                        icon={<EditIcon />}
+                        w={9}
+                        onClick={onOpen}
+                      />
+                      <IconButton
+                        bg="#3F3F3F"
+                        color="white"
+                        aria-label="delete Product"
+                        size="xs"
+                        icon={<DeleteIcon />}
+                        w={9}
+                      />
+                    </HStack>
                   </Box>
                 );
               })}
@@ -101,7 +116,20 @@ const Admin = () => {
               <ModalHeader>Modal Title</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <Text>Modla Body</Text>
+                <Text>
+                  {/* Update Product from hare */}
+                  <Stack>
+                    <Input placeholder="Enter Product Name" size="md" />
+                    <Input placeholder="Enter Product Imange URL" size="md" />
+                    <Input placeholder="Enter Product Price" size="md" />
+                    <Input placeholder="Enter Product Discount" size="md" />
+                    <Input placeholder="Enter Product Star" size="md" />
+                    <Input placeholder="Enter Product DisPrice" size="md" />
+                    <Button bg="#3F3F3F" color="white">
+                      Edit
+                    </Button>
+                  </Stack>
+                </Text>
               </ModalBody>
             </ModalContent>
           </Modal>
