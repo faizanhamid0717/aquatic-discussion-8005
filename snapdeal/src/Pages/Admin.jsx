@@ -84,7 +84,7 @@ const Admin = () => {
             {state.length > 0 &&
               state.map((el) => {
                 return (
-                  <Box border="1px solid grey" p={2}>
+                  <Box border="1px solid grey" p={2} key={el.id}>
                     <Image src={el.image} alt={el.title} w="100%" h="300px" />
                     <Text isTruncated>{el.title}</Text>
                     <HStack p={2} align={"center"} justify={"center"}>
