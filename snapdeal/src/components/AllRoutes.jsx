@@ -9,6 +9,7 @@ import Admin from "../Pages/Admin";
 import Cart from "./../Pages/Cart";
 import PageNotFound from "../Pages/PageNotFound";
 import Checkout from "./../Pages/Checkout";
+import Address from "./../Pages/Address";
 const AllRoutes = () => {
   return (
     <Routes>
@@ -20,6 +21,7 @@ const AllRoutes = () => {
       <Route path="/payment" element={<Payment />}></Route>
       <Route path="/admin" element={<Admin />}></Route>
       <Route path="/checkout" element={<Checkout />}></Route>
+      <Route path="/address" element={<Address />}></Route>
       <Route path="*" element={<PageNotFound />}></Route>
     </Routes>
   );
