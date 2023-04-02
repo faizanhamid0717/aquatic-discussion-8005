@@ -24,24 +24,7 @@ const Product = () => {
     console.log(e.target.value)
     setOrder(e.target.value)
   }
-// useEffect(()=>{
-//   let params={
-//     order
-//   }
-//   order && (params.order=order)
-//   setSearchParam(params)
-// },[order])
 
-// let obj={
-//   params:{
-//     _sort:searchParam.get('order') && 'price',
-//     _order:searchParam.get('odrer')
-//   }
-// }
-
-//   useEffect(()=>{
-//      dispatch(getProductFn(obj))
-//   },[order])
 
 
 const handleColorChange = (e) => {
@@ -67,9 +50,7 @@ useEffect(() => {
     obj.params._sort = 'price';
     obj.params._order = 'desc';
   }
-  // if (selectedColors.length > 0) {
-  //   obj.params.color = selectedColors.join(',');
-  // }
+  
 
 
   setSearchParam(obj.params)
