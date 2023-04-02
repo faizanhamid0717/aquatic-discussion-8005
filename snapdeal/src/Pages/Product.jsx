@@ -9,39 +9,23 @@ import {
   RangeSliderThumb,
 } from '@chakra-ui/react'
 import ProductCart from "./ProductCard";
+
 import { useSearchParams } from "react-router-dom";
 
 const Product = () => {
   const [searchParam,setSearchParam]=useSearchParams()
-  const [selectedColors, setSelectedColors] = useState([]);
-  const [order,setOrder]=useState('')
+
   const data=useSelector((store)=>store.productReducer.product
   )
   console.log('products',data)
   const dispatch=useDispatch()
 
+
   const handelSort=(e)=>{
     console.log(e.target.value)
     setOrder(e.target.value)
   }
-// useEffect(()=>{
-//   let params={
-//     order
-//   }
-//   order && (params.order=order)
-//   setSearchParam(params)
-// },[order])
 
-// let obj={
-//   params:{
-//     _sort:searchParam.get('order') && 'price',
-//     _order:searchParam.get('odrer')
-//   }
-// }
-
-//   useEffect(()=>{
-//      dispatch(getProductFn(obj))
-//   },[order])
 
 
 const handleColorChange = (e) => {
@@ -67,9 +51,7 @@ useEffect(() => {
     obj.params._sort = 'price';
     obj.params._order = 'desc';
   }
-  // if (selectedColors.length > 0) {
-  //   obj.params.color = selectedColors.join(',');
-  // }
+ 
 
 
   setSearchParam(obj.params)
@@ -93,6 +75,11 @@ useEffect(() => {
 
   dispatch(getProductFn(obj))
 }, [order,selectedColors])
+
+
+
+
+
 
   return <div>
         
@@ -355,6 +342,7 @@ useEffect(() => {
               <p style={{paddingTop:'10px',paddingRight:'45px',color:'gray'}}>(40)</p>
             </div>
 
+
             <div style={{border:"1px solid gray",width:'250px',height:'45px',paddingTop:'6px',marginTop:'8px',borderRadius:'5px',marginLeft:'200px'}}>
 
               <div onChange={handelSort}>
@@ -368,6 +356,7 @@ useEffect(() => {
             </select> 
              </div>      
                
+
             </div>
          </div>
 
@@ -377,8 +366,11 @@ useEffect(() => {
              <ProductCart {...ele} key={ele.id}/>
           )}
           </div> 
+          
       </div>
+      
      </div>
+     {/* <Footer/> */}
 
 
 

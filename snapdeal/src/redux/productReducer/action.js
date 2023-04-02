@@ -8,11 +8,12 @@ import {
   PRODUCT_REQUEST_PENDING,
 } from "./actionType";
 
-const API = `http://localhost:9090/Add`;
+const API = `https://snapdeal-clone-server.onrender.com/Add`;
 
 //For Getting The Data
 export const getProductFn = (obj) => (dispatch) => {
   dispatch({ type: PRODUCT_REQUEST_PENDING });
+
 
    axios.get(`https://snapdeal-clone-server.onrender.com/Add`,obj)
     .then((res) => {
@@ -31,7 +32,8 @@ export const postProductFn = (productData) => (dispatch) => {
   return axios
     .post(API, productData)
     .then((res) => {
-      dispatch({ type: POST_PRODUCT_REQUEST_SUCCESS, payload: res.data });
+      dispatch({ type: POST_PRODUCT_REQUEST_SUCCESS });
+      dispatch({ type: GET_PRODUCT_REQUEST_SUCCESS, payload: res.data });
     })
     .catch((err) => {
       console.log("API FAILURE", err);
