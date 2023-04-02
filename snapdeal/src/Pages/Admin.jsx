@@ -27,7 +27,6 @@ import Product from "./Product";
 import EditModel from "../components/EditModel";
 
 const Admin = () => {
-
   const [change, setChange] = useState(false);
   const { isLoading, isError, product } = useSelector((state) => {
     return state.productReducer;
@@ -36,16 +35,14 @@ const Admin = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // const data = product.find((el) => el.id === +id);
-    
     dispatch(getProductFn());
-    //  console.log(change);
   }, [change]);
-  //  console.log(state);
+
   if (isLoading) {
     console.log(isLoading);
     //  return <Spinner size="xl" />;
   }
+  
   return (
     <Box>
       <Flex border="1px solid black" p="12px 20px" align="center">
@@ -96,8 +93,7 @@ const Admin = () => {
                     <Image src={el.image} alt={el.title} w="100%" h="300px" />
                     <Text isTruncated>{el.title}</Text>
                     <HStack p={2} align={"center"} justify={"center"}>
-                      <EditModel id={el.id} change={setChange}/>
-                     
+                      <EditModel id={el.id} change={setChange} />
                     </HStack>
                   </Box>
                 );
