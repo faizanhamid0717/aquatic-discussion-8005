@@ -32,7 +32,8 @@ export const postProductFn = (productData) => (dispatch) => {
   return axios
     .post(API, productData)
     .then((res) => {
-      dispatch({ type: POST_PRODUCT_REQUEST_SUCCESS, payload: res.data });
+      dispatch({ type: POST_PRODUCT_REQUEST_SUCCESS });
+      dispatch({ type: GET_PRODUCT_REQUEST_SUCCESS, payload: res.data });
     })
     .catch((err) => {
       console.log("API FAILURE", err);
