@@ -11,7 +11,7 @@ function App() {
       {/* <h1>Welcome to Snapdeal</h1> */}
       <Navbar />
       <AllRoutes />
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 }
