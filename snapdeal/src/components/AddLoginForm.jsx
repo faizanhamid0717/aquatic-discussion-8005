@@ -9,25 +9,34 @@ import {
   DrawerHeader,
   Stack,
   Input,
+  Select,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { postProductFn } from "../redux/productReducer/action";
 
 export default function AddLoginForm() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [star, setStar] = useState("");
-
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
   const handleSubmit = () => {
     let data = {
-      name,
-      image,
-      price,
-      discount,
-      star,
+      id: Date.now(),
+      title: name,
+      image: image,
+      price: price,
+      discount: discount,
+      category: category,
+      description: description,
+      rating: star,
     };
+    dispatch(postProductFn(data));
     console.log(data);
   };
   return (
@@ -74,7 +83,21 @@ export default function AddLoginForm() {
                 value={star}
                 onChange={(e) => setStar(e.target.value)}
               />
-
+              <Input
+                placeholder="Enter Product Description"
+                size="md"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <Select
+                placeholder="Select Category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="women's clothing">WOMEN</option>
+                <option value="men's clothing">MEN</option>
+                <option value="child">KID'S</option>
+              </Select>
               <Button bg="#3F3F3F" color="white" onClick={handleSubmit}>
                 ADD
               </Button>
