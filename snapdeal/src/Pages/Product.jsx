@@ -51,7 +51,7 @@ useEffect(() => {
     obj.params._sort = 'price';
     obj.params._order = 'desc';
   }
- 
+
 
 
   setSearchParam(obj.params)
