@@ -1,5 +1,5 @@
 import React from "react";
-import ReactLogo from "../images/fashiondeal.png"
+// import ReactLogo from "../images/fashiondeal.png"
 // const Footer = () => {
 //   return <div>Footer</div>;
 // };
@@ -72,9 +72,15 @@ export const Footer=()=> {
           templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }}
           spacing={8}>
           <Stack spacing={6}>
-            <Box>
-              <img width="40%" src={ReactLogo} />
+            <Box display={'flex'}>
+              {/* <img width="40%" src={ReactLogo} /> */}
               {/* <Logo color={useColorModeValue('gray.700', 'white')} /> */}
+
+              <img width='60px'  src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_-Cx1rsVdkUWe_EPCVjGC8Bt6YyRCpzlF_XR7Hgwivpo0S2AD'/>
+         {/* <Link to="/">  */}
+         
+         <p style={{color:"black",fontSize:'40px',fontWeight:'600',fontFamily:'Cursive',paddingBottom:'5px'}}>fdeal</p> 
+         {/* </Link> */}
             </Box>
             <Text fontSize={'sm'}>
               © 2023 Fashiondeal. All rights reserved

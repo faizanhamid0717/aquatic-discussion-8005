@@ -25,7 +25,7 @@ import {
     DrawerContent,
     DrawerCloseButton,Stack,RadioGroup,Radio,Button,Drawer,useDisclosure,Text,Box,Image
   } from '@chakra-ui/react'
-
+import {Link} from 'react-router-dom'
 export function DrawerCategory() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [placement, setPlacement] = useState('right')
@@ -39,11 +39,14 @@ export function DrawerCategory() {
         </RadioGroup>
         
         <Box display={'flex'}  borderRadius={'5px'}>
+        <Link to='/product'>
         <Image width={'35px'} height={'40px'} borderRadius={'100%'} marginLeft={'20px'} src='https://images.meesho.com/images/products/209786534/bc2mn_512.webp'/>
+        </Link>
         
         <Text marginLeft={'15px'} marginTop={'10px'}  onClick={onOpen}>
           Men's Fashion
         </Text> 
+        
         </Box>
 
         <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
