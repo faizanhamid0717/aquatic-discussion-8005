@@ -9,16 +9,17 @@ import {
   RangeSliderThumb,
 } from '@chakra-ui/react'
 import ProductCart from "./ProductCard";
+
 import { useSearchParams } from "react-router-dom";
 
 const Product = () => {
   const [searchParam,setSearchParam]=useSearchParams()
-  const [selectedColors, setSelectedColors] = useState([]);
-  const [order,setOrder]=useState('')
+
   const data=useSelector((store)=>store.productReducer.product
   )
   console.log('products',data)
   const dispatch=useDispatch()
+
 
   const handelSort=(e)=>{
     console.log(e.target.value)
@@ -50,7 +51,7 @@ useEffect(() => {
     obj.params._sort = 'price';
     obj.params._order = 'desc';
   }
-  
+
 
 
   setSearchParam(obj.params)
@@ -74,6 +75,11 @@ useEffect(() => {
 
   dispatch(getProductFn(obj))
 }, [order,selectedColors])
+
+
+
+
+
 
   return <div>
         
@@ -336,6 +342,7 @@ useEffect(() => {
               <p style={{paddingTop:'10px',paddingRight:'45px',color:'gray'}}>(40)</p>
             </div>
 
+
             <div style={{border:"1px solid gray",width:'250px',height:'45px',paddingTop:'6px',marginTop:'8px',borderRadius:'5px',marginLeft:'200px'}}>
 
               <div onChange={handelSort}>
@@ -349,6 +356,7 @@ useEffect(() => {
             </select> 
              </div>      
                
+
             </div>
          </div>
 
@@ -358,8 +366,11 @@ useEffect(() => {
              <ProductCart {...ele} key={ele.id}/>
           )}
           </div> 
+          
       </div>
+      
      </div>
+     {/* <Footer/> */}
 
 
 
