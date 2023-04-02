@@ -33,7 +33,6 @@ export const postProductFn = (productData) => (dispatch) => {
     .post(API, productData)
     .then((res) => {
       dispatch({ type: POST_PRODUCT_REQUEST_SUCCESS });
-      dispatch({ type: GET_PRODUCT_REQUEST_SUCCESS, payload: res.data });
     })
     .catch((err) => {
       console.log("API FAILURE", err);
@@ -61,6 +60,7 @@ export const deleteProductFn = (id) => (dispatch) => {
   return axios
     .delete(`${API}/${id}`)
     .then((res) => {
+      console.log("delete req", res);
       dispatch({ type: DELETE_PRODUCT_REQUEST_SUCCESS });
     })
     .catch((err) => {

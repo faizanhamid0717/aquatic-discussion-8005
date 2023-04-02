@@ -11,9 +11,9 @@ import {
   Input,
   Select,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { postProductFn } from "../redux/productReducer/action";
+import { getProductFn, postProductFn } from "../redux/productReducer/action";
 
 export default function AddLoginForm() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,6 +25,7 @@ export default function AddLoginForm() {
   const [star, setStar] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
+  const [change, setChange] = useState(false);
   const handleSubmit = () => {
     let data = {
       id: Date.now(),
@@ -37,8 +38,13 @@ export default function AddLoginForm() {
       rating: star,
     };
     dispatch(postProductFn(data));
+    setChange((prev) => !prev);
     console.log(data);
   };
+
+  useEffect(() => {
+    dispatch(getProductFn());
+  }, [change]);
   return (
     <>
       <Button onClick={onOpen} w="80%" m="10px" bg="#3F3F3F" color="white">
