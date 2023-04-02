@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {useSelector,useDispatch} from 'react-redux'
 import { getProductFn } from "../redux/productReducer/action";
 import "./Product.css"
@@ -9,16 +9,90 @@ import {
   RangeSliderThumb,
 } from '@chakra-ui/react'
 import ProductCart from "./ProductCard";
+import { useSearchParams } from "react-router-dom";
 
 const Product = () => {
+  const [searchParam,setSearchParam]=useSearchParams()
+  const [selectedColors, setSelectedColors] = useState([]);
+  const [order,setOrder]=useState('')
   const data=useSelector((store)=>store.productReducer.product
   )
   console.log('products',data)
   const dispatch=useDispatch()
 
-  useEffect(()=>{
-     dispatch(getProductFn())
-  },[])
+  const handelSort=(e)=>{
+    console.log(e.target.value)
+    setOrder(e.target.value)
+  }
+// useEffect(()=>{
+//   let params={
+//     order
+//   }
+//   order && (params.order=order)
+//   setSearchParam(params)
+// },[order])
+
+// let obj={
+//   params:{
+//     _sort:searchParam.get('order') && 'price',
+//     _order:searchParam.get('odrer')
+//   }
+// }
+
+//   useEffect(()=>{
+//      dispatch(getProductFn(obj))
+//   },[order])
+
+
+const handleColorChange = (e) => {
+  const color = e.target.value;
+  if (selectedColors.includes(color)) {
+    setSelectedColors(selectedColors.filter((c) => c !== color));
+  } else {
+    setSelectedColors([...selectedColors, color]);
+  }
+}
+
+
+
+useEffect(() => {
+  let obj = {
+    params: {}
+  }
+  
+  if (order === 'asc') {
+    obj.params._sort = 'price';
+    obj.params._order = 'asc';
+  } else if (order === 'desc') {
+    obj.params._sort = 'price';
+    obj.params._order = 'desc';
+  }
+  // if (selectedColors.length > 0) {
+  //   obj.params.color = selectedColors.join(',');
+  // }
+
+
+  setSearchParam(obj.params)
+}, [order])
+
+useEffect(() => {
+  let obj = {
+    params: {}
+  }
+  
+  if (order === 'asc') {
+    obj.params._sort = 'price';
+    obj.params._order = 'asc';
+  } else if (order === 'desc') {
+    obj.params._sort = 'price';
+    obj.params._order = 'desc';
+  }
+  if (selectedColors.length > 0) {
+    obj.params.color = selectedColors.join(',');
+  }
+
+  dispatch(getProductFn(obj))
+}, [order,selectedColors])
 
   return <div>
         
@@ -42,9 +116,9 @@ const Product = () => {
 
   <div id='filter'>
          <h3>- Sports Fashion</h3>
-          <p className="f1">- Men's Sports Fashion   - 3388</p>
-          <p className="f2">- Men's Sports FootWear - 3388</p>
-          <p className="f3">- Sports Shoes For men - 3388</p>
+          <p className="f1">- Men's Fashion   - 3388</p>
+          <p className="f2">- Women's Fashion  - 3388</p>
+          <p className="f3">- Sports Shoes - 3388</p>
 
              <div className="detail">
               <div>
@@ -127,39 +201,53 @@ const Product = () => {
              <div className="colorpaint">
                 <div style={{padding:'5px',width:'130px',fontSize:'14px',color:'gray'}}>
 
+                {['blue'].map((color) => (
                      <div style={{display:'flex',justifyContent:'space-evenly',paddingRight:'30px',textAlign:'left'}}>
-                       <input type='checkbox'/>
+                       <input type='checkbox' value={color}  checked={selectedColors.includes(color)}
+          onChange={handleColorChange}/>
                        <p style={{width:'14px',height:'13px',marginTop:'4px',backgroundColor:'blue'}}></p>
                        <h3> Blue</h3>
                      </div>
+                ))}
                      <br/>
-
+                     {['red'].map((color) => (
                      <div style={{display:'flex',justifyContent:'space-evenly',paddingRight:'30px'}}>
-                       <input type='checkbox'/>
+                       <input type='checkbox'  value={color}  checked={selectedColors.includes(color)}
+          onChange={handleColorChange}/>
                        <p style={{width:'14px',height:'13px',marginTop:'4px',backgroundColor:'red',marginRight:'10px'}}></p>
                        <h3>Red</h3>
                      </div>
+                      ))}
                      <br/>
 
+                     {['green'].map((color) => (
                      <div style={{display:'flex',justifyContent:'space-evenly',paddingRight:'30px'}}>
-                       <input type='checkbox'/>
+                       <input type='checkbox'  value={color}  checked={selectedColors.includes(color)}
+          onChange={handleColorChange}/>
                        <p style={{width:'14px',height:'13px',marginTop:'4px',backgroundColor:'green'}}></p>
                        <h3>Green</h3>
                      </div>
+                      ))}
                      <br/>
 
+                     {["white"].map((color) => (
                      <div style={{display:'flex',justifyContent:'space-evenly',paddingRight:'30px'}}>
-                       <input type='checkbox'/>
+                       <input type='checkbox'  value={color}  checked={selectedColors.includes(color)}
+          onChange={handleColorChange}/>
                        <p style={{border:'.5px solid gray',width:'14px',height:'13px',marginTop:'4px',backgroundColor:'white'}}></p>
                        <h3> White</h3>
                      </div>
+                     ))}
                      <br/>
 
+                     {["black"].map((color) => (
                      <div style={{display:'flex',justifyContent:'space-evenly',paddingRight:'30px'}}>
-                       <input type='checkbox'/>
+                       <input type='checkbox'  value={color}  checked={selectedColors.includes(color)}
+          onChange={handleColorChange}/>
                        <p style={{width:'14px',height:'13px',marginTop:'4px',backgroundColor:'black'}}></p>
                        <h3> Black</h3>
                      </div>
+                     ))}
 
                 </div>
 
@@ -255,6 +343,7 @@ const Product = () => {
                 <p style={{fontSize:'20px',color:'gray'}}>+</p>
             </div>
    
+   
          </div>
            
          {/* ******************************************PRODUCTS******************************************** */}
@@ -263,16 +352,22 @@ const Product = () => {
 
             <div style={{width:'230px',display:"flex",justifyContent:'space-between',marginLeft:'15px',paddingTop:'10px'}}>
               <h1 style={{fontSize:'30px'}}>ALL ITEMS </h1>
-              <p style={{paddingTop:'10px',paddingRight:'35px',color:'gray'}}>(1250)</p>
+              <p style={{paddingTop:'10px',paddingRight:'45px',color:'gray'}}>(40)</p>
             </div>
 
             <div style={{border:"1px solid gray",width:'250px',height:'45px',paddingTop:'6px',marginTop:'8px',borderRadius:'5px',marginLeft:'200px'}}>
-              <label>Sort by :</label>
-                <select>
-                    <option>Price</option>
-                    <option>Price (High To Low)</option>
-                    <option>Price (Low To High)</option>
-                </select>
+
+              <div onChange={handelSort}>
+              
+
+          <label>Sort by Price: </label>
+            <select value={order} onChange={handelSort}>
+              <option value=''>--Select--</option>
+              <option value='asc'>Low to High</option>
+              <option value='desc'>High to Low</option>
+            </select> 
+             </div>      
+               
             </div>
          </div>
 

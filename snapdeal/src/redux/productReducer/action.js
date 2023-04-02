@@ -11,10 +11,10 @@ import {
 const API = `http://localhost:9090/Add`;
 
 //For Getting The Data
-export const getProductFn = () => (dispatch) => {
+export const getProductFn = (obj) => (dispatch) => {
   dispatch({ type: PRODUCT_REQUEST_PENDING });
 
-   axios.get(`http://localhost:9090/Add`)
+   axios.get(`https://snapdeal-clone-server.onrender.com/Add`,obj)
     .then((res) => {
       // console.log('res-data',res.data)
       dispatch({ type: GET_PRODUCT_REQUEST_SUCCESS, payload: res.data });

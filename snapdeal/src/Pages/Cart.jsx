@@ -5,7 +5,7 @@ import { TiTick } from "react-icons/ti";
 import { RiCloseFill } from "react-icons/ri";
 
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+// import styled from "styled-components";
 import { useState } from "react";
 import { Box, Heading, useDisclosure } from "@chakra-ui/react";
 import {
@@ -46,13 +46,13 @@ const style = {
   // borderRadius: "5px",
 };
 
-const Notification = styled.div`
-  background-color: rgb(25, 188, 156);
-  padding: 1rem;
-  display: ${(prop) => (prop.show ? "flex" : "none")};
-  height: 80px;
-  width: 100%;
-`;
+// const Notification = styled.div`
+//   background-color: rgb(25, 188, 156);
+//   padding: 1rem;
+//   display: ${(prop) => (prop.show ? "flex" : "none")};
+//   height: 80px;
+//   width: 100%;
+// `;
 
 const Cart = ({ isOpen, onOpen, onClose }) => {
   const [popup, setPopup] = useState(true);

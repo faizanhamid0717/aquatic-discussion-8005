@@ -3,8 +3,9 @@ import "./Navbar.css";
 // // import Logo from "../../assets/Logo.svg";
 // import { FiAlignRight } from "react-icons/fi";
 import { FiShoppingCart } from 'react-icons/fi';
-import { Link,InputGroup,Text,Input,InputRightAddon ,Box,Icon,Menu,MenuButton,MenuList,MenuItem,Button,Avatar,Center,MenuDivider} from "@chakra-ui/react";
-import { Search2Icon,ArrowForwardIcon } from '@chakra-ui/icons'
+import { InputGroup,Text,Input,InputRightAddon ,Box,Icon,Menu,MenuButton,MenuList,MenuItem,Button,Avatar,Center,MenuDivider} from "@chakra-ui/react";
+import { SearchIcon,ArrowForwardIcon } from '@chakra-ui/icons'
+import {Link} from 'react-router-dom'
 // const Links = () => {
 // 	return (
 // 		<div>
@@ -68,16 +69,19 @@ export const Navbar = () => {
   return (
     <div id='navbar'>
          <div className="logo">
+         <img width='60px'  src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_-Cx1rsVdkUWe_EPCVjGC8Bt6YyRCpzlF_XR7Hgwivpo0S2AD'/>
          <Link to="/"> 
-         <img width="370px" height="80px" />
+         
+         <p style={{color:"white",fontSize:'40px',fontWeight:'600',fontFamily:'Cursive',paddingBottom:'5px'}}>fdeal</p> 
          </Link>
          </div>
 
          <div className="input">
-         <InputGroup mt={'15px'}>     
+         <InputGroup mt={'10px'}>     
        {/* <Text fontWeight={'bold'} fontFamily={"Cursive"}  fontSize={{ base: '15px', md: '25px',xl:'35px' }}>SHOP THE EASY WAY ...</Text> */}
         <Input  placeholder= "Search product and brand" type="text" onChange={(e)=>setSelect(e.target.value)}/> 
-        <InputRightAddon children={<Search2Icon/>} />
+        
+        <InputRightAddon color={'white'}  backgroundColor={'black'} w={'100px'} paddingLeft={'40px'} children={<SearchIcon/>}/>
        </InputGroup>
           
           </div>
@@ -92,17 +96,19 @@ export const Navbar = () => {
                    
 
          </div>
-         <div className="download">
+         <div id="login">
          <Menu>
                 <MenuButton
                   as={Button}
                   rounded={'full'}
                   variant={'link'}
                   cursor={'pointer'}
-                  minW={0}>
+                  color={'white'}
+                  minW={0} border={0} gap={5}>
+                    Sign In
                   <Avatar
                     size={'sm'}
-                    src={'https://avatars.dicebear.com/api/male/username.svg'}
+                    src={'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR26CmOEGogTfcVSowq0Nw1tA4y3CRGTEZEiROX7GDsCKX5J4eX'}
                   />
                 </MenuButton>
                 <MenuList alignItems={'center'}>
@@ -110,21 +116,23 @@ export const Navbar = () => {
                   <Center>
                     <Avatar
                       size={'xl'}
-                      src={'https://avatars.dicebear.com/api/male/username.svg'}
+                      src={'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR26CmOEGogTfcVSowq0Nw1tA4y3CRGTEZEiROX7GDsCKX5J4eX'}
                     />
                   </Center>
                   <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                   <Link to='/login'><MenuItem> User Login </MenuItem></Link>
+                  <Link to='/adminlogin'> <MenuItem>Admin Login</MenuItem></Link>
+                  <MenuItem><Link to='/'>Logout</Link></MenuItem>
                 </MenuList>
               </Menu>
          </div>
     </div>
   )
 }
+
+
+
+
+

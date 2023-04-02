@@ -57,7 +57,7 @@
 #body{
     /* border: 1px solid green; */
    
-    height: 1500px;
+    height: auto;
     margin: 20px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
