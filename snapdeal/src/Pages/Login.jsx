@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import {Box,Text,Input,Button} from "@chakra-ui/react" 
 import axios from 'axios';
-import DarkModeButton from '../components/ButtonMode';
 import {useSelector,useDispatch} from 'react-redux'
 import { login } from '../redux/authReducer/action';
 
@@ -20,7 +19,7 @@ export const Login=()=>{
     // eve.holt@reqres.in
     // cityslicka
     return(<>
-        <DarkModeButton/>
+        
         <Box mb={"20px"} >
             <Box  margin={"auto"} mt={"150px"} width={"330px"} height={"390px"} boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px" >
                 <Text textAlign={"start"} fontSize="17px" m={"10px 30px "} paddingTop="20px" >Login/Sign Up On Snapdeal</Text>

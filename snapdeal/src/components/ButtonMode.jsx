@@ -8,8 +8,10 @@ export default function DarkModeButton(props) {
      * Ideally, only the button component should be used (without Flex).
      * Props compatible with <Button /> are supported.
      */
-    <Flex mt="10px" justifyContent="end" alignItems="center">
+    <Flex mr="20px" justifyContent="end" alignItems="center">
       <Button
+        background="none"
+        border="none"
         aria-label="Toggle Color Mode"
         onClick={toggleColorMode}
         _focus={{ boxShadow: 'none' }}
