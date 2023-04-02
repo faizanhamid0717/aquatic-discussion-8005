@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Box, Text, Input, Button } from "@chakra-ui/react";
 import axios from "axios";
@@ -6,11 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { login } from "../redux/authReducer/action";
 import { Navigate } from "react-router-dom";
 
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const { isAuth } = useSelector((store) => store.authReducer);
+
 
   const handleSubmit = () => {
     dispatch(login(email, password));
@@ -109,6 +112,7 @@ export const Login = () => {
               Google
             </Button>
           </Box>
+
         </Box>
       </Box>
     </>

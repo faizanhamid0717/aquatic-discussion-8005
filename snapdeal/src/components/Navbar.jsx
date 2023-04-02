@@ -6,6 +6,8 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { InputGroup,Text,Input,InputRightAddon ,Box,Icon,Menu,MenuButton,MenuList,MenuItem,Button,Avatar,Center,MenuDivider} from "@chakra-ui/react";
 import { SearchIcon,ArrowForwardIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
+import DarkModeButton from "./ButtonMode";
+
 // const Links = () => {
 // 	return (
 // 		<div>
@@ -75,7 +77,7 @@ export const Navbar = () => {
          <p style={{color:"white",fontSize:'40px',fontWeight:'600',fontFamily:'Cursive',paddingBottom:'5px'}}>fdeal</p> 
          </Link>
          </div>
-
+         
          <div className="input">
          <InputGroup mt={'10px'}>     
        {/* <Text fontWeight={'bold'} fontFamily={"Cursive"}  fontSize={{ base: '15px', md: '25px',xl:'35px' }}>SHOP THE EASY WAY ...</Text> */}
@@ -96,6 +98,7 @@ export const Navbar = () => {
                    
 
          </div>
+          
          <div id="login">
          <Menu>
                 <MenuButton
@@ -111,6 +114,7 @@ export const Navbar = () => {
                     src={'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR26CmOEGogTfcVSowq0Nw1tA4y3CRGTEZEiROX7GDsCKX5J4eX'}
                   />
                 </MenuButton>
+                
                 <MenuList alignItems={'center'}>
                   <br />
                   <Center>
@@ -121,13 +125,17 @@ export const Navbar = () => {
                   </Center>
                   <br />
                   <br />
+                  
                   <MenuDivider />
                    <Link to='/login'><MenuItem> User Login </MenuItem></Link>
                   <Link to='/adminlogin'> <MenuItem>Admin Login</MenuItem></Link>
                   <MenuItem><Link to='/'>Logout</Link></MenuItem>
+                  
                 </MenuList>
+                
               </Menu>
          </div>
+         <DarkModeButton/>
     </div>
   )
 }
