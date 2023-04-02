@@ -1,269 +1,287 @@
-import * as React from "react";
-import styles from "./payment.module.css";
-
-import { TiTick } from "react-icons/ti";
-import { RiCloseFill } from "react-icons/ri";
-
-import { Link, useNavigate } from "react-router-dom";
-// import styled from "styled-components";
-import { useState } from "react";
-import { Box, Heading, useDisclosure } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
+  Badge,
+  Button,
+  Center,
+  Flex,
+  Heading,
+  Image,
+
+  Stack,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
-
-import CartView from "./CartView";
-// import { CartProvider } from "../../Context/CartContextProvider";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
 import axios from "axios";
-// import Snackbar from "@mui/material/Snackbar";
-import { useToast } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartFn } from "../redux/cartReducer/action";
+import { Link } from "react-router-dom";
+const Cart = () => {
+  const [empty, setEmpty] = useState(false);
+  const [error, setError] = useState(false);
 
-import { IconButton } from "@chakra-ui/react";
+  const state = useSelector((state) => {
+    return state.cartReducer.data;
+  });
+  console.log(state);
 
-import { CloseButton } from "@chakra-ui/react";
+  // const total = state.reduce((total, item) => {
+  //   return total + item.price * item.qty;
+  // }, 0);
 
-// import { removeDetails } from "../../Redux/Allproduct/action";
-// import { shallowEqual, useDispatch, useSelector } from "react-redux";
-// import { deleteCartProduct } from "../../Server/Apis";
-// import { delete_api } from "../../Redux/Cacrt/cart.api";
-// import { UserProvider } from "../../Context/UserContextProvider";
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCartFn());
+  }, []);
+  let total = 0;
+  state.map((el) => {
+    total += el.price;
+  });
 
-const style = {
-  // position: "absolute",
-  // top: "50%",
-  // left: "50%",
-  // transform: "translate(-50%, -50%)",
-  // width: "100%",
-  // height: "100%",
-  // bgcolor: "background.paper",
-  // boxShadow: 24,
-  // borderRadius: "5px",
-};
-
-// const Notification = styled.div`
-//   background-color: rgb(25, 188, 156);
-//   padding: 1rem;
-//   display: ${(prop) => (prop.show ? "flex" : "none")};
-//   height: 80px;
-//   width: 100%;
-// `;
-
-const Cart = ({ isOpen, onOpen, onClose }) => {
-  const [popup, setPopup] = useState(true);
-  const [open, setOpen] = React.useState(false);
-  const [cart, setCart] = React.useState([]);
-  const [totalRs, setTotalRs] = React.useState(0);
-  // const { isOpen, onOpen, onClose } = useDisclosure()
-
-  const [qty, setqty] = useState(1);
-
-  const navigate = useNavigate();
-
-  // const handleOpen = () => {setOpen(true);
-  //   onOpen();
-  // };
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const toast = useToast();
-
-  // let cartProduct={
-  //   title:"hrx item name",
-  //   images:[
-  //         "https://n4.sdlcdn.com/imgs/k/e/u/large/Veirdo-100-Cotton-Regular-Fit-SDL302182620-1-f0fac.jpg"
-  //   ],
-  //   discounted_price:"584",
-  const [random, setRandom] = useState(0);
-
-  // }
-  const handelremove = (id) => {
-    axios
-      .patch(
-        `https://snapdealbackend.onrender.com/carts/delete`,
-        { productId: id },
-        { headers: { token: localStorage.getItem("token") } }
-      )
-      .then((r) => {
-        if (r.data.msg) {
-          toast({
-            title: "Product",
-            description: r.data.msg,
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-          });
-          setRandom(random + 1);
-        } else {
-          toast({
-            title: "Product",
-            description: r.data,
-            status: "error",
-            duration: 9000,
-            isClosable: true,
-          });
-        }
-      });
-  };
-
-  const token = localStorage.getItem("token");
-
-  React.useEffect(() => {
-    cartHandler();
-  }, [qty, random]);
-
-  const cartHandler = () => {
-    axios
-      .get("https://snapdealbackend.onrender.com/carts", {
-        headers: {
-          token: token,
-        },
-      })
-      .then((res) => {
-        setCart(res.data.products);
-      });
-  };
-
-  const qtychange = (val, prodid) => {
-    axios
-      .patch(
-        "https://snapdealbackend.onrender.com/carts/update",
-
-        {
-          productId: prodid,
-          quntity: val,
-        },
-        {
-          headers: {
-            token: token,
-          },
-        }
-      )
-      .then(() => setqty(val));
-  };
-
-  const checkout = () => {
-    onClose();
-    navigate("/checkout");
-  };
-
-  return (
-    <div>
-      <div className={styles.main}>
-        <Modal
-          isOpen={isOpen}
-          onClose={onClose}
-          size={{ sm: "4xl", md: "4xl", lg: "6xl" }}
-        >
-          <ModalOverlay />
-          <ModalContent>
-            <div style={style}>
-              <div className={styles.cartTitle}>
-                <div>
-                  <h4>
-                    Shooping Cart{" "}
-                    <span
-                      style={{ fontSize: "1rem", color: "rgb(132,132,132)" }}
-                    >
-                      {cart?.length} Item
-                    </span>
-                  </h4>
-                </div>
-                <div>
-                  <RiCloseFill onClick={onClose} />
-                </div>
-              </div>
-
-              <div className={styles.table}>
-                <div className={styles.th}>
-                  <div>Item Details</div>
-                  <div>Price</div>
-                  <div>Quantity</div>
-                  <div style={{ display: "flex" }}>
-                    <div>Delivery with Charges</div>
-                    <input
-                      placeholder="Pincode"
-                      style={{
-                        width: "70px",
-                        margin: "0 2px",
-                        border: "1px solid rgb(132,132,132)",
-                      }}
-                    />
-                    <button
-                      style={{
-                        background: "black",
-                        color: "white",
-                        padding: "5px",
-                        fontSize: "0.9rem",
-                        width: "80px",
-                        borderRadius: "50px",
-                      }}
-                    >
-                      CHECK
-                    </button>
-                  </div>
-                  <div>Subtotal</div>
-                </div>
-
-                {cart?.length == 0 ? (
-                  <Heading>Your Cart is Empty</Heading>
-                ) : (
-                  cart?.map((item, ind) => (
-                    <CartView
-                      product={item}
-                      qtychange={qtychange}
-                      handelremove={handelremove}
-                      key={ind}
-                    />
-                  ))
-                )}
-              </div>
-
-              <div className={styles.footer}>
-                <div>
-                  <p>Delivery and payment options can be selected later</p>
-                  <p> Safe and Secure Payments</p>
-                  <p>100% Payment Protection, Easy Returns Policy</p>
-                </div>
-                <div>
-                  <div style={{ display: "flex" }}>
-                    <div>Sub Total: </div>
-                    <div style={{ marginLeft: "auto" }}>
-                      Rs.{" "}
-                      {cart?.reduce(
-                        (c, el) => c + el.product.price * el.quntity,
-                        0
-                      )}
-                    </div>
-                  </div>
-                  <div style={{ display: "flex" }}>
-                    <div>Delivery Charges: </div>
-                    <div
-                      style={{ marginLeft: "auto", color: "rgb(21, 228, 107)" }}
-                    >
-                      FREE
-                    </div>
-                  </div>
-                </div>
-                <div
-                  onClick={checkout}
-                  style={{ fontSize: "15px", fontWeight: "bold" }}
+  console.log("cart state", state);
+  return empty ? (
+    <Heading>Oops Your Cart is Empty </Heading>
+  ) : error ? (
+    ""
+  ) : (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(1,1fr)",
+          gap: "50px",
+          width: "800px",
+        }}
+      >
+        {state?.map((item) => (
+          <Center py={6} key={item.id}>
+            <Stack
+              borderWidth="1px"
+              borderRadius="lg"
+              w={{ sm: "100%", md: "740px" }}
+              height={{ sm: "476px", md: "20rem" }}
+              direction={{ base: "column", md: "row" }}
+              // bg={useColorModeValue('white', 'gray.900')}
+              boxShadow={"l"}
+              padding={4}
+            >
+              <Flex flex={1} bg="blue.200">
+                <Image
+                  objectFit="cover"
+                  boxSize="100%"
+                  // src={
+                  //   'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
+                  // }
+                  src={item.image}
+                />
+              </Flex>
+              <Stack
+                flex={1}
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="center"
+                p={1}
+                pt={2}
+              >
+                <Heading fontSize={"2xl"} fontFamily={"body"}>
+                  {item.title}
+                </Heading>
+                <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+                  {item.category}
+                </Text>
+                <Text
+                  textAlign={"center"}
+                  // color={useColorModeValue('gray.700', 'gray.400')}
+                  fontFamily={"body"}
+                  px={7}
                 >
-                  PROCEED TO PAY Rs.{" "}
-                  {cart?.reduce(
-                    (c, el) => c + el.product.price * el.quntity,
-                    0
-                  )}
-                </div>
-              </div>
-            </div>
-          </ModalContent>
-        </Modal>
+                  Price : ₹ {item.price}
+                  {/* <Link href={'#'} color={'blue.400'}>
+                  #tag
+                </Link>
+                me in your posts */}
+                </Text>
+                <Stack
+                  align={"center"}
+                  justify={"center"}
+                  direction={"row"}
+                  mt={6}
+                >
+                  <Badge
+                    px={2}
+                    py={1}
+                    // bg={useColorModeValue('gray.50', 'gray.800')}
+                    fontWeight={"400"}
+                  >
+                    #art
+                  </Badge>
+                  <Badge
+                    px={2}
+                    py={1}
+                    // bg={useColorModeValue('gray.50', 'gray.800')}
+                    fontWeight={"400"}
+                  >
+                    #photography
+                  </Badge>
+                  <Badge
+                    px={2}
+                    py={1}
+                    // bg={useColorModeValue('gray.50', 'gray.800')}
+                    fontWeight={"400"}
+                  >
+                    #music
+                  </Badge>
+                </Stack>
+                <Stack
+                  width={"100%"}
+                  mt={"2rem"}
+                  direction={"row"}
+                  padding={2}
+                  justifyContent={"space-between"}
+                  alignItems={"center"}
+                >
+                  <Button
+                    flex={1}
+                    size="sm"
+                    colorScheme="teal"
+                    variant="outline"
+                    w={"10px"}
+                    fontSize={"3xl"}
+                    rounded={"5px"}
+                    _focus={{
+                      bg: "gray.200",
+                    }}
+                    // disabled={count == 1}
+                    // onClick={() => handelCount(-1, ele.id)}
+                    // onClick={() => {
+                    //   if (item.quantity > 1) {
+                    //     dispatch({ type: "DECREASE", payload: item });
+                    //   }
+                    // }}
+                  >
+                    -
+                  </Button>
+                  <Button
+                    flex={1}
+                    size="sm"
+                    fontSize={"xl"}
+                    rounded={"full"}
+                    _focus={{
+                      bg: "gray.200",
+                    }}
+                  >
+                    {item.qty}
+                  </Button>
+                  <Button
+                    flex={1}
+                    size="sm"
+                    colorScheme="teal"
+                    variant="outline"
+                    fontSize={"2xl"}
+                    rounded={"5px"}
+                    _focus={{
+                      bg: "gray.200",
+                    }}
+                    // onClick={()=>handelCount(1,ele.id)}
+                    // onClick={() =>
+                    //   dispatch({ type: "INCREASE", payload: item })
+                    // }
+                  >
+                    +
+                  </Button>
+                  <Button
+                    flex={1}
+                    fontSize={"sm"}
+                    rounded={"full"}
+                    bg={"blue.400"}
+                    color={"white"}
+                    boxShadow={
+                      "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                    }
+                    _hover={{
+                      bg: "blue.500",
+                    }}
+                    _focus={{
+                      bg: "blue.500",
+                    }}
+                    // onClick={() => dispatch({ type: "REMOVE", payload: item })}
+                    bgColor={"#EF5350"}
+                  >
+                    Remove
+                  </Button>
+                </Stack>
+                <Heading fontSize={"xl"} fontFamily={"body"}>
+                  Total : ₹ {item.quantity * item.price}
+                </Heading>
+              </Stack>
+            </Stack>
+          </Center>
+        ))}
+      </div>
+      <div style={{ width: "400px", marginTop: "25px" }}>
+        <Text fontSize={"4xl"}>#FASHION-INSIDER</Text>
+        <Text fontSize={"2xl"} color={"#FFA726 "}>
+          Bag Summary
+        </Text>
+        <Text>Free Standard Shipping on orders of ₹ 1100 or more</Text>
+        <TableContainer>
+          <Table variant="simple">
+            <TableCaption fontWeight={"bold"} fontSize={"xl"}>
+              Total Amount : ₹ {total}
+            </TableCaption>
+            <Thead>
+              <Tr>
+                <Th></Th>
+                <Th> </Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <Td>Merchandise Subtotal</Td>
+                <Td fontWeight={"bold"} fontSize={"xl"}>
+                  {" "}
+                  ₹ {total}
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>Shipping</Td>
+                <Td>FREE</Td>
+              </Tr>
+              <Tr>
+                <Td>Estimated Tax</Td>
+                <Td> ₹ 0.00</Td>
+              </Tr>
+            </Tbody>
+            <Tfoot>
+              <Tr>
+                <Th></Th>
+                <Th></Th>
+                <Th></Th>
+              </Tr>
+            </Tfoot>
+          </Table>
+        </TableContainer>
+        <Link to="/address">
+          <Button
+            border="1px solid black"
+            w="300px"
+            // onClick={handleCheck}
+            bg={"#FBC02D"}
+          >
+            Check-Out
+          </Button>
+        </Link>
+        {/* {redirectToPayment && <Navigate to="/checkout" />} */}
       </div>
     </div>
   );
