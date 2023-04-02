@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -14,6 +14,7 @@ import {
   ModalHeader,
   ModalOverlay,
   SimpleGrid,
+  Spinner,
   Stack,
   Text,
   useDisclosure,
@@ -22,19 +23,29 @@ import AddLoginForm from "../components/AddLoginForm";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductFn } from "../redux/productReducer/action";
 import { Search2Icon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import Product from "./Product";
+import EditModel from "../components/EditModel";
 
 const Admin = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const state = useSelector((state) => {
-    return state.productReducer.product;
+
+  const [change, setChange] = useState(false);
+  const { isLoading, isError, product } = useSelector((state) => {
+    return state.productReducer;
   });
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // const data = product.find((el) => el.id === +id);
+    
     dispatch(getProductFn());
-  }, [dispatch]);
-  console.log(state);
+    //  console.log(change);
+  }, [change]);
+  //  console.log(state);
+  if (isLoading) {
+    console.log(isLoading);
+    //  return <Spinner size="xl" />;
+  }
   return (
     <Box>
       <Flex border="1px solid black" p="12px 20px" align="center">
@@ -51,13 +62,11 @@ const Admin = () => {
 
       <HStack>
         <Flex w="25%" height="78vh">
-          <Text>Side Panel</Text>
           <AddLoginForm />
         </Flex>
         <Box
           w="75%"
           m="auto"
-          // border="1px solid black"
           height="78vh"
           overflowY="auto"
           css={{
@@ -72,67 +81,28 @@ const Admin = () => {
             },
           }}
         >
-          <Text>Main Box</Text>
-
           <SimpleGrid
             columns={5}
             spacing={3}
             w="100%"
             align="center"
             justify={"center"}
+            mt={10}
           >
-            {state.length > 0 &&
-              state.map((el) => {
+            {product.length > 0 &&
+              product.map((el) => {
                 return (
                   <Box border="1px solid grey" p={2} key={el.id}>
                     <Image src={el.image} alt={el.title} w="100%" h="300px" />
                     <Text isTruncated>{el.title}</Text>
                     <HStack p={2} align={"center"} justify={"center"}>
-                      <IconButton
-                        bg="#3F3F3F"
-                        color="white"
-                        aria-label="edit Product"
-                        size="xs"
-                        icon={<EditIcon />}
-                        w={9}
-                        onClick={onOpen}
-                      />
-                      <IconButton
-                        bg="#3F3F3F"
-                        color="white"
-                        aria-label="delete Product"
-                        size="xs"
-                        icon={<DeleteIcon />}
-                        w={9}
-                      />
+                      <EditModel id={el.id} change={setChange}/>
+                     
                     </HStack>
                   </Box>
                 );
               })}
           </SimpleGrid>
-          <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Modal Title</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody>
-                <Text>
-                  {/* Update Product from hare */}
-                  <Stack>
-                    <Input placeholder="Enter Product Name" size="md" />
-                    <Input placeholder="Enter Product Imange URL" size="md" />
-                    <Input placeholder="Enter Product Price" size="md" />
-                    <Input placeholder="Enter Product Discount" size="md" />
-                    <Input placeholder="Enter Product Star" size="md" />
-                    <Input placeholder="Enter Product DisPrice" size="md" />
-                    <Button bg="#3F3F3F" color="white">
-                      Edit
-                    </Button>
-                  </Stack>
-                </Text>
-              </ModalBody>
-            </ModalContent>
-          </Modal>
         </Box>
       </HStack>
     </Box>
