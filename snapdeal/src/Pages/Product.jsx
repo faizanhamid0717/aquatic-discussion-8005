@@ -14,6 +14,8 @@ import { useSearchParams } from "react-router-dom";
 
 const Product = () => {
   const [searchParam,setSearchParam]=useSearchParams()
+  const [order,setOrder]=useState('')
+  const [selectedColors,setSelectedColors]=useState('')
 
   const data=useSelector((store)=>store.productReducer.product
   )
