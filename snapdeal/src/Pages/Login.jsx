@@ -16,7 +16,7 @@ export const Login = () => {
     dispatch(login(email, password));
   };
   if (isAuth) {
-    return <Navigate to={"/"} />;
+   return <Navigate to={"/"}  />;
   }
   console.log(isAuth);
   // eve.holt@reqres.in
