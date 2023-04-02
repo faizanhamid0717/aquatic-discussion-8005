@@ -10,11 +10,13 @@ import Cart from "./../Pages/Cart";
 import PageNotFound from "../Pages/PageNotFound";
 import Checkout from "./../Pages/Checkout";
 import Address from "./../Pages/Address";
+import { AdminLogin } from "../Pages/AdminLogin";
 const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/adminlogin" element={<AdminLogin />}></Route>
       <Route path="/product" element={<Product />}></Route>
       <Route path="/product/:id" element={<SingleProudctPage />}></Route>
       <Route path="/cart" element={<Cart />}></Route>
