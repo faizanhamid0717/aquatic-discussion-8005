@@ -32,7 +32,7 @@
 # Home Page
 ![fashion-deal-home-page](https://user-images.githubusercontent.com/83800834/229428096-f043cfe8-8906-4f4c-88d4-0194d8e69010.png)
 
-#LoginPage
+# LoginPage
 ![login](https://user-images.githubusercontent.com/83800834/229431937-28bdfe26-55d5-4fe3-8fd4-8799d2b60dff.png)
 
 
@@ -40,7 +40,7 @@
 ![products-page](https://user-images.githubusercontent.com/83800834/229430538-450b2861-90ff-4269-a4a3-8ade6ebcb79b.png)
 
 
-#sort and Filter page
+# sort and Filter page
 ![sort-filter](https://user-images.githubusercontent.com/83800834/229430581-b98df803-ccfd-4a0b-9e52-9cdd5257b92e.png)
 
 # Single Product Page
