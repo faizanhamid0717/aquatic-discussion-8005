@@ -1,7 +1,27 @@
 import { Box, Button, Divider, Flex, Input, Text } from "@chakra-ui/react";
 import React from "react";
-
+import { useSelector } from "react-redux";
+import { useToast } from "@chakra-ui/react";
+import { Navigate } from "react-router-dom";
 const Payment = () => {
+  const state = useSelector((state) => {
+    return state.cartReducer.data;
+  });
+  const toast = useToast();
+
+  const handleClick = () => {
+    toast({
+      title: "Payment successfully",
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+    });
+    <Navigate to={"/"} />;
+  };
+  let total = 0;
+  state.map((el) => {
+    total += el.price;
+  });
   return (
     <div>
       <Box backgroundColor="gray.50">
@@ -31,10 +51,10 @@ const Payment = () => {
           color="white"
           backgroundColor="#E40046"
           mt={8}
-          // onClick={handleOrdered}
-          
+          w="auto"
+          onClick={handleClick}
         >
-          PAY RS. {0}
+          PAY RS. {total}
         </Button>
         <Text color="black" mt={5}>
           7 Days Easy Returns

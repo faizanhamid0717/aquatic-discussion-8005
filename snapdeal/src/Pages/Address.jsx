@@ -16,7 +16,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Address = () => {
   const addre = {
     pincode: "",
@@ -149,19 +149,20 @@ const Address = () => {
               type="number"
             />
           </Flex>
-
-          <button
-            onClick={handlesubmit}
-            style={{
-              marginTop: "32px",
-              backgroundColor: "#E40046",
-              color: "white",
-              padding: "8px",
-              borderRadius: "7px",
-            }}
-          >
-            SAVE AND CONTINUE
-          </button>
+          <Link to="/payment">
+            <button
+              onClick={handlesubmit}
+              style={{
+                marginTop: "32px",
+                backgroundColor: "#E40046",
+                color: "white",
+                padding: "8px",
+                borderRadius: "7px",
+              }}
+            >
+              SAVE
+            </button>
+          </Link>
           <AlertDialog isOpen={isOpen} onClose={onClose}>
             <AlertDialogOverlay>
               <AlertDialogContent>
