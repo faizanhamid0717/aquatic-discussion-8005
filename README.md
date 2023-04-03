@@ -27,5 +27,5 @@
 
 
 # Home Page
+![fashion-deal-home-page](https://user-images.githubusercontent.com/83800834/229428096-f043cfe8-8906-4f4c-88d4-0194d8e69010.png)
 
-![home-page]([https://github.com/[username]/[reponame]/blob/[branch]/image.jp](https://github.com/faizanhamid0717/aquatic-discussion-8005/blob/main/fashion-deal-home-page.png)?raw=true)
