@@ -1,7 +1,8 @@
 # aquatic-discussion-8005
 
 # Deployed Link
- - https://quiet-pastelito-b6e8f1.netlify.app/
+
+- https://quiet-pastelito-b6e8f1.netlify.app/
 
 # Team Members
 
@@ -24,6 +25,5 @@
 - Add To Cart
 - Admin Panal (with CRUD Funcinality)
 - Sort and Filter (on price and color)
-
 
 # Home Page
