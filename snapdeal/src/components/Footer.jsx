@@ -5,7 +5,6 @@ import React from "react";
 // };
 
 // export default Footer;
-
 import {
   Box,
   chakra,
