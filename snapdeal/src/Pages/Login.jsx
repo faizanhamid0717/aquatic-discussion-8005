@@ -16,14 +16,11 @@ export const Login = () => {
   const handleSubmit = () => {
     dispatch(login(email, password));
   };
-  if (isAuth) {
-  //  return <Navigate to={"/"}  />;
-  }
-  // console.log(isAuth);
+  
   
   return (
     <>
-      
+      {isAuth&& <Navigate to="/"/>}
       <Box mb={"20px"}>
         <Box
           margin={"auto"}
