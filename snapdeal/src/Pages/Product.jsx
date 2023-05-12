@@ -79,10 +79,6 @@ useEffect(() => {
 }, [order,selectedColors])
 
 
-
-
-
-
   return <div>
         
       <div id='section1'>

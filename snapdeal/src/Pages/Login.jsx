@@ -26,7 +26,7 @@ export const Login = () => {
   // cityslicka
   return (
     <>
-      <DarkModeButton />
+      {/* <DarkModeButton /> */}
       <Box mb={"20px"}>
         <Box
           margin={"auto"}
