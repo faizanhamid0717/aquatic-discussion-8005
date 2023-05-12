@@ -1,19 +1,18 @@
 import { useState } from 'react'
-
 import React from 'react';
+ import Slider from "react-slick";
+ import {useSelector,useDispatch} from 'react-redux'
+ import "./HomePage.css"
 import {
-  
   IconButton,
   useBreakpointValue,
-  
   Heading,
-  
   Container,
 } from '@chakra-ui/react';
-// Here we have used react-icons package for the icons
+
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
-// And react-slick as our Carousel Lib
-import Slider from 'react-slick';
+
+// import Slider from 'react-slick';
 
 
 import {
@@ -26,12 +25,27 @@ import {
     DrawerCloseButton,Stack,RadioGroup,Radio,Button,Drawer,useDisclosure,Text,Box,Image
   } from '@chakra-ui/react'
 import {Link} from 'react-router-dom'
+import ProductCart from './ProductCard';
+
 export function DrawerCategory() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [placement, setPlacement] = useState('right')
   
     return (
       <>
+
+         <Box display={'flex'}  borderRadius={'5px'}>
+        <Link to='/product'>
+        <Image width={'20px'} height={'20px'}  marginLeft={'30px'} marginTop={'10px'} src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKoAAACqCAMAAAAKqCSwAAAAWlBMVEX///8AAADo6Ojf39+EhIQXFxcdHR34+PhsbGy8vLwjIyO3t7eioqLv7+9TU1Ps7OywsLB8fHxGRkZAQEBzc3OLi4taWlrNzc1MTEypqanV1dUqKirDw8MJCQm/lTXNAAABqklEQVR4nO3cS7KCMBCFYS6oaAB5KIqv/W/zDpyoScCBVZ1T9X8rOIWRdEg6WQYAAAAAAAAAaSvzwlxefhG07frBrY25oe/apaTd4S8Rh27+t99aB3y1nRsFR+t0747xpLV1tk91LGluncyXR6KO1sF8Yzhpc7IO5js1wahnZx3M587BqDvrXCG7YNTKOlZIpf5UzzfrXL5beKy2e+tgvn2kaFlZB/OtwkmVZiuhGiAre+ts7/qZKrBMqgwYZ1ctZZXM7OqqpfVVU01uY85NVbhQ+dTmxhaXgAAAAACAX2mKy7gyNl6K5QVrU0/WHwCepnoh7DWhrYvTdS7pfW2d79X6Hk9abKzTvdsU0ajJfbbex5J21sl8sY32pHbYn7aRkTpYB/MN4dF6f1gH8z3CLwGh3UChqEIDQOhvJfSyUpoChCZWpXJFqAhUKq2VFiyZ0DIQAAAAAPAjIodCZY7a6hxg1jkWLnTYXqeFQagxRKfdRqiJSag1TKjhTmg3UOipCrXcCjUyC7WHK81WQjWA0gURStduCF1mkildEZMJXbwDAAAAAAAAAJb+ASRKQjUuBHXtAAAAAElFTkSuQmCC'/>
+        </Link> 
+        
+        <Text marginLeft={'15px'} marginTop={'10px'} >
+          All
+        </Text>
+        
+    </Box>
+
+
         <RadioGroup defaultValue={placement} onChange={setPlacement}>
           <Stack direction='row' mb='4'>
            
@@ -39,9 +53,9 @@ export function DrawerCategory() {
         </RadioGroup>
         
         <Box display={'flex'}  borderRadius={'5px'}>
-        <Link to='/product'>
+        {/* <Link to='/product'> */}
         <Image width={'35px'} height={'40px'} borderRadius={'100%'} marginLeft={'20px'} src='https://images.meesho.com/images/products/209786534/bc2mn_512.webp'/>
-        </Link>
+        {/* </Link> */}
         
         <Text marginLeft={'15px'} marginTop={'10px'}  onClick={onOpen}>
           Men's Fashion
@@ -225,24 +239,20 @@ const settings = {
     fade: true,
     infinite: true,
     autoplay: true,
-    speed: 500,
+    speed: 1000,
     autoplaySpeed: 5000,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
   
   export function VideoSlider() {
-    // As we have used custom buttons, we need a reference variable to
-    // change the state
+   
     const [slider, setSlider] =useState ();
-  
-    // These are the breakpoints which changes the position of the
-    // buttons as the screen size changes
+
     const top = useBreakpointValue({ base: '90%', md: '50%' });
     const side = useBreakpointValue({ base: '30%', md: '40px' });
   
-    // This list contains all the data for carousels
-    // This can be static or loaded from a server
+  
     const cards = [
       {
         title: 'Design Projects 1',
@@ -349,300 +359,50 @@ const settings = {
 
 // ********************************************Product-Slido************************************
 
-//   const settings = {
-//     dots: true,
-//     arrows: false,
-//     fade: true,
-//     infinite: true,
-//     autoplay: true,
-//     speed: 500,
-//     autoplaySpeed: 5000,
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//   };
+
+
+const setting = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 4,
+  slidesToScroll: 2,
+  autoplay: true,
+  speed: 10000,
+  autoplaySpeed: 10000,
+  cssEase: "linear"
+};
+
+  export default function ProductCarousels() {
+   
+    const [slider, setSlider] = React.useState(null);
   
-  export function ProductSlider() {
-    // As we have used custom buttons, we need a reference variable to
-    // change the state
-    const [slider, setSlider] =useState ();
-  
-    // These are the breakpoints which changes the position of the
-    // buttons as the screen size changes
-    const top = useBreakpointValue({ base: '90%', md: '50%' });
-    const side = useBreakpointValue({ base: '30%', md: '40px' });
-  
-    // This list contains all the data for carousels
-    // This can be static or loaded from a server
-    const card = [
-        {
-            id: 20,
-            title: "Redmi Go Back cover",
-            price: 166,
-            description: "Readmi Go Back Cover Soft Cover Country of Origin India",
-            category: "Phone",
-            image: "https://images.meesho.com/images/products/78591203/akim8_512.webp",
-            rating: 3.6
-          },
-          {
-            "id": 21,
-            "title": "Cute Stylus Girls Frocks",
-            "price": 345,
-            "description": "Cute Stylus Girls Frocks with beautifull print Country of Origin : India",
-            "category": "child",
-            "image": "https://images.meesho.com/images/products/151023315/4q15u_512.webp",
-            "rating": 3.6
-          },
-          {
-            "id": 22,
-            "title": "trendy printed shirt for men",
-            "price": 345,
-            "description": "Cute Stylus Girls Frocks with beautifull print Country of Origin : India",
-            "category": "men's clothing",
-            "image": "https://images.meesho.com/images/products/210991063/1mxoo_400.webp",
-            "rating": 3.6
-          },
-          {
-            "id": 23,
-            "title": "PATHAAN SHIRT MANS",
-            "price": 401,
-            "description": "Name : trendy printed shirt for men Fabric : Lycr Sleeve Length : Short Sleeves",
-            "category": "men's clothing",
-            "image": "https://images.meesho.com/images/products/209786534/bc2mn_512.webp",
-            "rating": 3.9
-          },
-          {
-            "id": 24,
-            "title": "PATHAN MOVIES LATEST",
-            "price": 375,
-            "description": "PATHAN MOVIES LATEST Stylish Designer Wear Printed Pathan Shirt For Any Occasion. Combination Of Shirt Specially Designed For Multiple Occasions",
-            "category": "men's clothing",
-            "image": "https://images.meesho.com/images/products/228657353/ol22d_400.webp",
-            "rating": 4.1
-          },
-          {
-            "id": 25,
-            "title": "Styles Latest Women Clutches",
-            "price": 305,
-            "description": "Name : Styles Latest Women Clutches Material : PU No. of Compartments : 2",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/222350479/ur5xu_512.webp",
-            "rating": 3.8
-          },
-          {
-            "id": 26,
-            "title": "Gorgeous Stylishr Handbag",
-            "price": 450,
-            "description": "Gorgeous Stylishr Handbag, attractive and classic in design ladies purse,",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/199781557/xz96r_400.webp",
-            "rating": 3.7
-          },
-          {
-            "id": 27,
-            "title": "Jewellery Set",
-            "price": 450,
-            "description": "Name : Jewellery Set  Base Metal : Alloy Plating : Gold Plated",
-            "category": "jewellery",
-            "image": "https://images.meesho.com/images/products/100419490/orpmg_512.webp",
-            "rating": 3.1
-          },
-          {
-            "id": 28,
-            "title": "Women's Self-Design Brown Georgette Top",
-            "price": 459,
-            "description": "Name : Women's Self-Design Brown Georgette Top Fabric : Georgette Sleeve Length : Three-Quarter Sleeves",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/6886912/4c117_512.webp",
-            "rating": 4.2
-          },
-          {
-            "id": 29,
-            "title": "Tops & Tunics",
-            "price": 309,
-            "description": "This Women Top made from Pure Cotton Fabric is new addition in the list of offerings from shefab",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/198945068/2nlab_512.webp",
-            "rating": 4.3
-          },
-          {
-            "id": 30,
-            "title": "Flawsome Comfy Girls Frocks & Dresses",
-            "price": 498,
-            "description": "Name : Flawsome Comfy Girls Frocks & Dresses Fabric : Viscose Sleeve Length : Three-Quarter Sleeves Pattern : Solid",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/218567722/qqdii_512.webp",
-            "rating": 4.2
-          },
-          {
-            "id": 31,
-            "title": "Best Selling Round Neck Half Sleeves t-shirt for mens ",
-            "price": 189,
-            "description": "Name : Best Selling Round Neck Half Sleeves t-shirt for mens ( Pack of 1 ) Fabric : CottonSleeve Length : Short Sleeves",
-            "category": "men's clothing",
-            "image": "https://images.meesho.com/images/products/102841746/4dtzp_512.webp",
-            "rating": 3.1
-          },
-          {
-            "id": 32,
-            "title": "Men's T shirt ",
-            "price": 194,
-            "description": "Name : Men's T shirt Fabric : Lycra Sleeve Length : Short Sleeves Pattern : Printed",
-            "category": "men's clothing",
-            "image": "https://images.meesho.com/images/products/202477824/trxk2_512.webp",
-            "rating": 3.8
-          },
-          {
-            "id": 33,
-            "title": "Cotton Peach Short Sleeves Colorblocked Tshirts",
-            "price": 299,
-            "description": "Name : CLASSIC FABULOUS STRIPED MEN TSHIRTS Fabric : Cotton Sleeve Length : Short Sleeves",
-            "category": "men's clothing",
-            "image": "https://images.meesho.com/images/products/109672330/gdcvl_512.webp",
-            "rating": 3.9
-          },
-          {
-            "id": 34,
-            "title": "Poly Blend Grey Short Sleeves Printed Tshirts",
-            "price": 199,
-            "description": "Name : Men's Printed Half Sleeve Round Neck T-shirt Fabric : Poly Blend Sleeve Length : Short Sleeves Pattern : Printed",
-            "category": "men's clothing",
-            "image": "https://images.meesho.com/images/products/149408141/dkhin_400.webp",
-            "rating": 3.5
-          },
-          {
-            "id": 35,
-            "title": "MEN DENIM STECHEBLE JEANS",
-            "price": 599,
-            "description": "Name : MEN DENIM STECHEBLE JEANS Fabric : Denim Pattern : Solid Net Quantity (N) : 1 MEN DENIM STRECHEBLE JEANS",
-            "category": "men's clothing",
-            "image": "https://images.meesho.com/images/products/104628748/rqawc_512.webp",
-            "rating": 3.5
-          },
-          {
-            "id": 36,
-            "title": "Women's Printed Rayon Long Anarkali Kurti",
-            "price": 299,
-            "description": "Name : Women's Printed Rayon Long Anarkali Kurta Fabric : Rayon Sleeve Length : Three-Quarter Sleeves",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/49856632/zdbej_400.webp",
-            "rating": 3.8
-          },
-          {
-            "id": 37,
-            "title": "Anarkali",
-            "price": 399,
-            "description": "women, men and children. Customers can expect a world-class shopping environment stocking the latest in international fashion from around the globe, as well as OM SAI LATEST CREATION's",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/66828244/iwkwb_512.webp",
-            "rating": 3.9
-          },
-          {
-            "id": 38,
-            "title": "Treandy Kurtis",
-            "price": 389,
-            "description": "Name : Treandy Kurtis Fabric : Rayon Sleeve Length : Three-Quarter Sleeves Pattern : Printed Combo of : Single",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/87952064/mvdpc_512.webp",
-            "rating": 4
-          },
-          {
-            "id": 39,
-            "title": "Cheetah Print Middi",
-            "price": 489,
-            "description": "Name : Cheetah Print Middi Fabric : Crepe Sleeve Length : Three-Quarter Sleeves Pattern : Printed",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/133245035/oifsc_512.webp",
-            "rating": 4.4
-          },
-          {
-            "id": 40,
-            "title": "LERIYA FASHION Women Fit and Flare Floral Printed Dress",
-            "price": 344,
-            "description": "The images shown are for representational purposes only. Please note that the color of the product may slightly vary in comparison to the picture shown on the website due to various reasons ",
-            "category": "women's clothing",
-            "image": "https://images.meesho.com/images/products/140925190/miab9_512.webp",
-            "rating": 4.4
-          }
-    ];
-  
+    const top = useBreakpointValue({ base: "50%", md: "50%" });
+    const left1 = useBreakpointValue({ base: "0px", md: "0%" });
+    const left2 = useBreakpointValue({ base: "0px", md: "0%" });
+
+    const data=useSelector((store)=>store.productReducer.product)
+// const data=useSelector((store)=>console.log('store',store))
+
+    console.log('products',data)
     return (
-      <Box
-    //    mt={'40px'}
-        position={'relative'}
-        height={'450px'}
-        width={'full'}
-        overflow={'hidden'}>
-        {/* CSS files for react-slick */}
-        <link
-          rel="stylesheet"
-          type="text/css"
-          charSet="UTF-8"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
-        {/* Left Icon */}
-        <IconButton
-          aria-label="left-arrow"
-          variant="ghost"
-          position="absolute"
-          left={side}
-          top={top}
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          onClick={() => slider?.slickPrev()}>
-          <BiLeftArrowAlt size="40px" />
-        </IconButton>
-        {/* Right Icon */}
-        <IconButton
-          aria-label="right-arrow"
-          variant="ghost"
-          position="absolute"
-          right={side}
-          top={top}
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          onClick={() => slider?.slickNext()}>
-          <BiRightArrowAlt size="40px" />
-        </IconButton>
-        {/* Slider */}
-        <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {card.map((card, index) => (
-            <Box
-              key={index}
-              height={'sm'}
-              
-              position="relative"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="cover"
-              backgroundImage={`url(${card.image})`}>
-              {/* This is the block you need to change, to customize the caption */}
-              <Container size="container.lg" height="400px" position="relative">
-                <Stack
-                  spacing={6}
-                  w={'full'}
-                  maxW={'lg'}
-                  position="absolute"
-                  top="50%"
-                  transform="translate(0, -50%)">
-                  <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color='#F7A200'>
-                    {card.title}
-                  </Heading>
-                  <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color='#86B817'>
-                  ₹{card.price}
-                  </Heading>
-                  {/* <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                    {card.price}
-                  </Text> */}
-                </Stack>
-              </Container>
-            </Box>
-          ))}
-        </Slider>
-      </Box>
+      <Box  id='craousel' >
+      {/* <h2> Multiple items </h2> */}
+      <Slider {...setting}>
+
+        {data?.map((ele)=>
+         <Box  height={'370px'} padding={'10px'} >
+         
+         <ProductCart {...ele}/>
+       </Box>
+        )}
+       
+    
+      </Slider>
+    </Box>
     );
   }
+
+
+
+  
+ 

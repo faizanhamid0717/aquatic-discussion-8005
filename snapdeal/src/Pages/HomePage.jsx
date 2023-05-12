@@ -1,5 +1,5 @@
 import React from "react";
-import {DrawerBeauty, DrawerCategory, DrawerKids, DrawerKitchen, DrawerWomen, ProductSlider, VideoSlider} from "./DrawerHomePage";
+import ProductCarousels, {DrawerBeauty, DrawerCategory, DrawerKids, DrawerKitchen, DrawerWomen, ProductSlider, VideoSlider} from "./DrawerHomePage";
 import "./HomePage.css"
 const HomePage = () => {
   return <div>
@@ -25,15 +25,13 @@ const HomePage = () => {
         <br/>
         <p>Sports,Fitness and Outdoor</p>
         <br/>
-        <p>Computers and Gaming</p>
+        
         </div>    
         </div>
 
 
        <div className="slido"><VideoSlider/></div>
        
-
-
        <div className="pincode">
         <img  src="https://cdn-icons-png.flaticon.com/512/1244/1244597.png?w=826&t=st=1680166698~exp=1680167298~hmac=a0c0192d3209af7d158f4a878c0c4f152ff83ca6ae2efa151f62e2309e7b8a18"/>
         <p>Your Delivery Pincode</p>
@@ -43,7 +41,10 @@ const HomePage = () => {
        </div>
   </div>
 
-  <div className="product"><ProductSlider/></div>
+  <div className="product">
+      <h1>TRENDING PRODUCTS</h1>
+    {/* <ProductSlider/> */} <ProductCarousels/>
+    </div>
   
   <div id='proImage'>
     <img src='https://assets.ajio.com/cms/AJIO/WEB/D-UHP-The%20Ethnic%20Affair-P5-Upto80.jpg'/>
@@ -103,7 +104,33 @@ const HomePage = () => {
    </div>
 
 
+{/* **************************************************************************************** */}
 
+<div id='payment'>
+
+    <div className='pay'>
+        <p>PAYMENT</p>
+        <div id='sec1'>
+           <img height='20px 'width='50px' src='https://64.media.tumblr.com/a76e43f83c87782667ee4cc4ed23af30/ed0d4f3ab28cdeed-8b/s500x750/88e64bf1fa25680b5312bed8a134429d3af5721a.png'/>
+           <img width='40px' height='20px'src='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRq9wFLWLE3uGwpPoSYtTMRxJTej5lIS5CMrbcpDLdIAnUkqRBd'/>
+           <img width='50px' height='20px' src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRJmxFjSsbBSxqIRaNo0na46k7ZLoOmKUtJCURqFS3sB-A62Izw'/>
+           <img width='100px' height='150px'  src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSp7e-yot-GRTqp0exeyxJBFECMj4eIn9HBCNi67K2it6SEBb39'/>
+           <img width='100px' height='20px'src='https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQy3MnJsnMTPIPC5PJ9N6Xuprc_EpjyE1__p4qd6pdW2zo_B35_'/>
+        </div>
+    </div>
+
+    <div className='social'>
+        <p>CONNECT</p>
+        <div id='sec2'>
+       <a href='https://www.facebook.com/login/'><img width='50px'src='https://i4.sdlcdn.com/img/footer/facebook@4x.png'/></a> 
+       <a href=''> <img width='50px'src='https://i1.sdlcdn.com/img/footer/twitter@4x.png'/></a>
+      <a href=''><img width='50px'src='https://i4.sdlcdn.com/img/footer/instagram@4x.png'/></a>
+       <a href=''> <img width='50px' src='https://i2.sdlcdn.com/img/footer/linkedin@4x.png'/></a>
+        <a href=''><img width='50px'src='https://i1.sdlcdn.com/img/footer/youtube@4x.png'/></a>
+        <a href=''><img width='50px'src='https://i4.sdlcdn.com/img/footer/Telegram-Logo_112x112.png'/></a>
+        </div>
+    </div>
+</div>
 
 
 

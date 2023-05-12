@@ -88,10 +88,27 @@
     /* border: 1px solid blue; */
     width: 963px;
     margin-left: 265px;
-    height: 450px;
+    height: 470px;
     margin-top: 50px;
     margin-bottom:30px ;
     border-radius: 5px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+}
+.product>h1{
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(135, 137, 139);
+    margin-right: 650px;
+}
+
+#craousel{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: .5px;
+}
+
+#proCard:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border: .1px solid gainsboro;
 }
 
 #proImage{
@@ -169,3 +186,72 @@
 #security p{
     color: grey;
 }
+
+#payment{
+    border: 1px solid red;
+    height: 200px;
+    width: auto;
+     display: flex;
+     justify-content: space-around;
+     padding: 20px;
+}
+
+.pay{
+    border: 1px solid green;
+    height: 150px;
+    width: 600px;
+    padding: 10px;
+}
+
+.social{
+    border: 1px solid green;
+    height: 150px;
+    width: 400px;
+    padding: 10px;
+}
+
+#sec1{
+    border: 1px solid red;
+    height: 50px;
+    /* display: grid;
+    grid-template-columns: repeat(5,1fr); */
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+   
+
+}
+#sec2{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+@media screen and (min-width:300px) and (max-width:1000px){
+
+ 
+    #home{
+    /* height:auto; */
+    /* width:auto; */
+    gap:0px
+    }
+  .drawer{
+    width: 160px;
+    height: auto;
+  }
+   .slido{
+    width: 580px;
+    height: 270px;
+   }
+  .pincode{
+    width: 180px;
+    height: 270;
+  }
+   #craousel{
+    width: 700px;
+    height:360px;
+    /* margin-right: 300px; */
+   }
+
+
+  }
