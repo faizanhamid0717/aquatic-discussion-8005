@@ -7,6 +7,9 @@ import {
   RangeSliderTrack,
   RangeSliderFilledTrack,
   RangeSliderThumb,
+  Button,
+  useColorModeValue,
+  Flex
 } from '@chakra-ui/react'
 import ProductCart from "./ProductCard";
 
@@ -19,12 +22,12 @@ const Product = () => {
 
   const data=useSelector((store)=>store.productReducer.product
   )
-  console.log('products',data)
+  
   const dispatch=useDispatch()
 
 
   const handelSort=(e)=>{
-    console.log(e.target.value)
+    
     setOrder(e.target.value)
   }
 
@@ -81,25 +84,21 @@ useEffect(() => {
 
 
 
-
-
   return <div>
         
       <div id='section1'>
         <p> Home | Sports Fashion   | Men's Sports Fashion  |  Men's Sports Footwear | Sports Shoes for Men</p>
       </div>
 
-     <div id="section2">
+     <Flex ml="20px" justifyContent={"space-around"} width={"50%"} >
       <p>Trending searches  :  </p>
-      <button>Kitchen Product</button>
-      <button>Shoes for men</button>
-      <button>Kurti set</button>
-      <button>Sandal men</button>
-      <button>Sport shoe men</button>
-      <button>Saree</button>
-      <button>Tshirt</button>
-      <button>Wallstikers</button>
-     </div>
+      <Button bg={useColorModeValue('white.100', 'whiteAlpha.100')} fontSize={13} >Kurti set</Button>
+      <Button bg={useColorModeValue('white.100', 'whiteAlpha.100')} fontSize={13} >Sandal men</Button>
+      <Button bg={useColorModeValue('white.100', 'whiteAlpha.100')} fontSize={13} >Sport shoe</Button>
+      <Button bg={useColorModeValue('white.100', 'whiteAlpha.100')} fontSize={13} >Saree</Button>
+      <Button bg={useColorModeValue('white.100', 'whiteAlpha.100')} fontSize={13} >Tshirt</Button>
+      <Button bg={useColorModeValue('white.100', 'whiteAlpha.100')} fontSize={13} >Wallstikers</Button>
+     </Flex>
 
      <div id='body'>
 

@@ -1,11 +1,4 @@
 import React from "react";
-// import ReactLogo from "../images/fashiondeal.png"
-// const Footer = () => {
-//   return <div>Footer</div>;
-// };
-
-// export default Footer;
-
 
 import {
   Box,
