@@ -1,8 +1,6 @@
-
 import React, { useState } from "react";
-import { Box, Text, Input, Button } from "@chakra-ui/react";
+import { Box, Text, Input, Button,useColorModeValue } from "@chakra-ui/react";
 import axios from "axios";
-import DarkModeButton from "../components/ButtonMode";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../redux/authReducer/action";
 import { Navigate } from "react-router-dom";
@@ -19,14 +17,13 @@ export const Login = () => {
     dispatch(login(email, password));
   };
   if (isAuth) {
-   return <Navigate to={"/"}  />;
+  //  return <Navigate to={"/"}  />;
   }
-  console.log(isAuth);
-  // eve.holt@reqres.in
-  // cityslicka
+  // console.log(isAuth);
+  
   return (
     <>
-      <DarkModeButton />
+      
       <Box mb={"20px"}>
         <Box
           margin={"auto"}
@@ -103,7 +100,7 @@ export const Login = () => {
             <Button
               mt="5px"
               border={"0px"}
-              background="white"
+              bg={useColorModeValue('white.100', 'whiteAlpha.100')}
               borderRadius="3px"
               height={"40px"}
               boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
