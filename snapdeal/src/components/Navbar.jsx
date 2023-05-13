@@ -167,13 +167,11 @@ export const Navbar = () => {
                   
 
                   <MenuDivider />
-                  {!isAuth&& <Link to='/login'><MenuItem> User Login </MenuItem></Link>}
-                  <Link to='/adminlogin'> <MenuItem>Admin Login</MenuItem></Link>
-                  <MenuItem><Link to='/' onClick={handle} >Logout</Link></MenuItem>
+                  {!isAuth&& <Link to='/login'><MenuItem bgColor={'black'} color={'white'} border={'0px'}> User Login </MenuItem></Link>}
+                  <Link to='/adminlogin'> <MenuItem bgColor={'black'} color={'white'} border={'0px'}>Admin Login</MenuItem></Link>
+                  <MenuItem  bgColor={'black'} color={'white'} border={'0px'}><Link to='/' onClick={handle} >Logout</Link></MenuItem>
+                 
                   {/* <MenuDivider/> */}
-                   <Link to='/login'><MenuItem bgColor={'black'} color={'white'} border={'0px'}> User Login </MenuItem></Link> <MenuDivider/>
-                  <Link to='/adminlogin'> <MenuItem bgColor={'black'} color={'white'} border={'0px'}>Admin Login</MenuItem></Link><MenuDivider/>
-                  <MenuItem bgColor={'black'} color={'white'} border={'0px'}><Link to='/'>Logout</Link></MenuItem>
 
                   
                 </MenuList>
