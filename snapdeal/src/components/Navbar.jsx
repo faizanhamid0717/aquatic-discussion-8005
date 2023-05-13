@@ -1,74 +1,31 @@
 // import React from "react";
 // mongodb+srv://faizan:hamid@cluster0.pxxlzf1.mongodb.net/snapDB?retryWrites=true&w=majority
 import "./Navbar.css";
-// // import Logo from "../../assets/Logo.svg";
-// import { FiAlignRight } from "react-icons/fi";
+
 import { FiShoppingCart } from 'react-icons/fi';
 import { InputGroup,Text,Input,InputRightAddon ,Box,Icon,Menu,MenuButton,MenuList,MenuItem,Button,Avatar,Center,MenuDivider} from "@chakra-ui/react";
 import { SearchIcon,ArrowForwardIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
 import DarkModeButton from "./ButtonMode";
-
-// const Links = () => {
-// 	return (
-// 		<div>
-// 			{/* <a href="#home" className="link">
-// 				Home
-// 			</a>
-// 			<a href="#skills" className="link">
-// 				Skills
-// 			</a>
-// 			<a href="#about" className="link">
-// 				About me
-// 			</a>
-// 			<a href="#contact" className="link">
-// 				Contact
-// 			</a> */}
-//       <Link to='/cart'>Cart</Link>
-      
-// 		</div>
-// 	);
-// };
-// const Navbar = () => {
-//     const [toggleMenu, setToggleMenu] = React.useState(false)
-// 	return (
-// 		<div className="navbar">
-// 			<div className="title">
-// 				{/* <img src={Logo} alt="logo" /> */}
-//         <Link to="/"> 
-//          <Image width="370px" height="80px" />
-//          </Link>
-// 				<p className="nav__header">Portfolio</p>
-// 			</div>
-
-//       <InputGroup>     
-//          <Image height="55px"  src="https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-home-header.jpg"/>
-//        </InputGroup> 
-
-// 			<div className="links">
-      
-// 				<Links />
-// 			</div>
-// 			<div className="toggle-links" onClick={() => {setToggleMenu(prev => !prev)}}>
-// 				<FiAlignRight className="hamburger-icon" />
-// 			</div>
-// 			{toggleMenu 
-//             ? 
-//             <div className="toggle-menu">
-// 				<Links />
-// 			</div>
-//             : 
-//             <></>}
-// 		</div>
-// 	);
-// };
-// export default Navbar;
-
+import {useSelector,useDispatch} from 'react-redux'
 
 import React, { useState } from 'react'
 
 export const Navbar = () => {
-  const [select,setSelect]=useState('')
+
+  // const [searchQuery, setSearchQuery] = useState('');
+  // const data=useSelector((store)=>store.productReducer.product)
+
+  // const filteredData = data.filter((item) =>
+  //   item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  
+  // const data=useSelector((store)=>console.log('store',store))
+  
+      console.log('products-nave',data)
+
+ 
   return (
     <>
             <div id='topnav'>
@@ -116,7 +73,9 @@ export const Navbar = () => {
          
          <div className="input">
          <InputGroup mt={'10px'}> 
-        <Input  placeholder= "Search product and brand" type="text" onChange={(e)=>setSelect(e.target.value)}/> 
+        <Input  placeholder= "Search product and brand" type="text" value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+/> 
         <InputRightAddon color={'white'}  backgroundColor={'black'} w={'100px'} paddingLeft={'40px'} children={<SearchIcon/>}/>
         </InputGroup>
           </div>
@@ -168,10 +127,10 @@ export const Navbar = () => {
 
 
          <div className="dark">
-                  <Link to="/cart">
+                 
                   <DarkModeButton />
                   
-                  </Link>
+                  
          </div>
          
     </div>

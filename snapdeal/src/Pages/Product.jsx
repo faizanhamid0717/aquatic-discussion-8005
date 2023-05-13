@@ -338,7 +338,7 @@ useEffect(() => {
            
          {/* ******************************************PRODUCTS******************************************** */}
       <div>
-         <div id="sort" style={{width:'950px',height:'70px'}}>
+         <div id="sort" >
 
             <div style={{width:'230px',display:"flex",justifyContent:'space-between',marginLeft:'15px',paddingTop:'10px'}}>
               <h1 style={{fontSize:'30px'}}>ALL ITEMS </h1>

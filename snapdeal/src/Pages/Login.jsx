@@ -20,11 +20,9 @@ export const Login = () => {
   
   return (
     <>
- fw22_0717_day_1
-      {/* <DarkModeButton /> */}
-=======
+
       {isAuth&& <Navigate to="/"/>}
- main
+ 
       <Box mb={"20px"}>
         <Box
           margin={"auto"}
