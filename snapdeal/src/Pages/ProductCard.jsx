@@ -10,12 +10,9 @@ import {
   Tooltip,
   Button,
 } from "@chakra-ui/react";
-// import { useContext } from 'react';
-//   import { BsStar, BsStarFill, BsStarHalf ,} from 'react-icons/bs';
-//   import { FiShoppingCart } from 'react-icons/fi';
+import "./HomePage.css"
 import { Link, useParams } from "react-router-dom";
-// import { Cartcontext } from '../context/CartContext';
-// import Fotter from './FotterPage';
+
 import { StarIcon } from "@chakra-ui/icons";
 
 const data = {
@@ -28,26 +25,18 @@ const data = {
   numReviews: 34,
 };
 
-// const pro={
-//     id: 23,
-//     title: "PATHAAN SHIRT MANS",
-//     price: 401,
-//     description: "Name : trendy printed shirt for men Fabric : Lycr Sleeve Length : Short Sleeves",
-//     category: "men's clothing",
-//     image: "https://images.meesho.com/images/products/209786534/bc2mn_512.webp",
-//     rating: 3.9
-//   }
+
 
 function ProductCart({ title, price, image, category, rating, id }) {
   return (
-    <div>
+    <div id='proCard'>
       <Flex p={1} alignItems="center" justifyContent="center">
         <Link to={`/product/${id}`}>
           <Box
             bg={useColorModeValue("white", "gray.800")}
             w="200px"
             h={"350px"}
-            border=".5px solid #E7EEFF"
+            // border=".5px solid #E7EEFF"
             rounded="3PX"
             p={"px"}
             //   shadow="sm"

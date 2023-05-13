@@ -1,3 +1,7 @@
+ fw22_0717_day_1
+
+=======
+ main
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -167,4 +171,6 @@ const SingleProudctPage = () => {
   );
 };
 
-export default SingleProudctPage;
+export default SingleProudctPage; fw22_0717_day_1
+
+======= main
