@@ -24,16 +24,18 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getCartFn } from "../redux/cartReducer/action";
-import { Link } from "react-router-dom";
+import { deleteCartFn, getCartFn } from "../redux/cartReducer/action";
+import { Link,useNavigate } from "react-router-dom";
 const Cart = () => {
   const [empty, setEmpty] = useState(false);
   const [error, setError] = useState(false);
+  const { isAuth } = useSelector((store) => store.authReducer);
+  const navigate=useNavigate()
 
   const state = useSelector((state) => {
     return state.cartReducer.data;
   });
-  console.log(state);
+  // console.log(state);
 
   // const total = state.reduce((total, item) => {
   //   return total + item.price * item.qty;
@@ -43,14 +45,26 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getCartFn());
   }, []);
+
   let total = 0;
-  state.map((el) => {
+  state?.map((el) => {
     total += el.price;
   });
 
-  console.log("cart state", state);
-  return empty ? (
-    <Heading>Oops Your Cart is Empty </Heading>
+  const handleDelete=(id)=>{
+    dispatch(deleteCartFn(id))
+    .then(()=>getCartFn())
+  }
+
+  if(!isAuth)
+  {
+    navigate("/login")
+  }
+
+  // console.log(isAuth)
+  // console.log("cart state", state);
+  return total==0 ? (
+    <Heading>Your Cart is Empty </Heading>
   ) : error ? (
     ""
   ) : (
@@ -63,7 +77,7 @@ const Cart = () => {
           width: "800px",
         }}
       >
-        {state?.map((item) => (
+        {state&&state?.map((item) => (
           <Center py={6} key={item.id}>
             <Stack
               borderWidth="1px"
@@ -215,13 +229,14 @@ const Cart = () => {
                       bg: "blue.500",
                     }}
                     // onClick={() => dispatch({ type: "REMOVE", payload: item })}
+                    onClick={() => handleDelete(item.id)}
                     bgColor={"#EF5350"}
                   >
                     Remove
                   </Button>
                 </Stack>
                 <Heading fontSize={"xl"} fontFamily={"body"}>
-                  Total : ₹ {item.quantity * item.price}
+                  {/* Total : ₹ {item.quantity * item.price} */}
                 </Heading>
               </Stack>
             </Stack>

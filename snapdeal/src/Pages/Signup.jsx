@@ -2,34 +2,50 @@ import React, { useState } from "react";
 import { Box, Text, Input, Button,useColorModeValue } from "@chakra-ui/react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../redux/authReducer/action";
+import { login, signup } from "../redux/authReducer/action";
 import { Navigate,Link } from "react-router-dom";
 
 
-export const Login = () => {
+export const Signup = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [state,setState]=useState("");
   const dispatch = useDispatch();
-  const { isAuth,loginMessage } = useSelector((store) => store.authReducer);
+  const { isAuth,signupMessage } = useSelector((store) => store.authReducer);
 
 
   const handleSubmit = () => {
-    dispatch(login(email, password))
+    let payload={name,email,password}
+    dispatch(signup(payload))
     .then(()=>{
+      setName("");
       setEmail("");
       setPassword("");
     })
+        // axios.post("http://localhost:4500/signup",payload)
+        // .then((res)=>{
+        //   setState(res.data.message)
+        //   setName("")
+        //   setEmail("")
+        //   setPassword("")
+        // })
+        // .catch((err)=>{
+        //         console.log(err.message)
+        // })
+    
   };
+  
   
   return (
     <>
-      {isAuth&& <Navigate to="/"/>}
       <Box mb={"20px"}>
+      
         <Box
           margin={"auto"}
-          mt={"70px"}
+          mt={"60px"}
           
-          width={{base:"280px",sm:"280px",md:"330px"}}
+          width={{base:"280px",sm:"300px",md:"330px"}}
           // height={"390px"}
           boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
         >
@@ -40,30 +56,39 @@ export const Login = () => {
             paddingTop="20px"
             fontWeight={500}
           >
-            Login on Snapdeal
+            Signup on Snapdeal
           </Text>
-          <Text
-            color="gray"
-            textAlign={"start"}
-            m={"18px 30px "}
-            fontSize={"12"}
-          >
-            Please provide your Email to Login on
-            Snapdeal.
-          </Text>
+
+          <Text mt={"20px"} ml={"29px"} textAlign={"left"}>Full Name</Text>
           <Input
-            type="email"
+          type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            borderRadius="0px"
+            pl={"8px"}
+            placeholder="First and last name"
+            border={"1px solid grey"}
+            height={"35px"}
+            width={"82%"}
+          />
+        <Text mt={"10px"} ml={"29px"} textAlign={"left"}>Email</Text>
+          <Input
+          type="text"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
             borderRadius="0px"
+            // mt={"10px"}
             pl={"8px"}
             placeholder="Email"
             border={"1px solid grey"}
             height={"35px"}
             width={"82%"}
-          ></Input>
+          />
+        <Text mt={"10px"} ml={"29px"} textAlign={"left"}>Password</Text>
           <Input
           type="password"
             value={password}
@@ -71,13 +96,13 @@ export const Login = () => {
               setPassword(e.target.value);
             }}
             borderRadius="0px"
-            mt={"10px"}
+            // mt={"10px"}
             pl={"8px"}
             placeholder="Password"
             border={"1px solid grey"}
             height={"35px"}
             width={"82%"}
-          ></Input>
+          />
           <Button
             _hover={{ color: "black" }}
             onClick={handleSubmit}
@@ -103,11 +128,12 @@ export const Login = () => {
               // paddingTop="20px"
             >
               
-            Create new account ?
-            <Link to={"/signup"} >
-             <Button color={"blue"} border={"0px"}  fontSize={"13px"} variant={"link"} >Sign up</Button>
+            Already have an account ?
+            <Link to={"/login"} >
+             <Button color={"blue"} border={"0px"}  fontSize={"13px"} variant={"link"} >Sign in</Button>
             </Link>
             </Text>
+            
             <Text
               textAlign={"center"}
               color="gray"
@@ -130,12 +156,11 @@ export const Login = () => {
               Google
             </Button>
           </Box>
-
         </Box>
-        {loginMessage&& <Text fontSize={20} fontWeight={500} mt={"20px"} >{loginMessage}</Text>}
+          {signupMessage&& <Text fontSize={20} fontWeight={500} mt={"20px"} >{signupMessage}</Text>}
       </Box>
     </>
   );
 };
 
-export default Login;
+export default Signup;

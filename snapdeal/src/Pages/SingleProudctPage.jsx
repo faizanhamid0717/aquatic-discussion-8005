@@ -29,15 +29,15 @@ const SingleProudctPage = () => {
   });
   const dispatch = useDispatch();
   const handelCart = () => {
-    console.log("hello");
+    // console.log("hello");
     setIsCart(true);
     dispatch(postCartFn(data));
   };
   useEffect(() => {
     const data = product.find((el) => el.id === +id);
-    console.log(data);
+    // console.log(data);
     setData(data);
-    console.log(id);
+    // console.log(id);
   }, [id]);
 
   return (

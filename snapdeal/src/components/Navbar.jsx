@@ -7,6 +7,9 @@ import { InputGroup,Text,Input,InputRightAddon ,Box,Icon,Menu,MenuButton,MenuLis
 import { SearchIcon,ArrowForwardIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
 import DarkModeButton from "./ButtonMode";
+import { useSelector, useDispatch } from "react-redux";
+
+
 
 // const Links = () => {
 // 	return (
@@ -68,6 +71,12 @@ import React, { useState } from 'react'
 
 export const Navbar = () => {
   const [select,setSelect]=useState('')
+  const { isAuth,name } = useSelector((store) => store.authReducer);
+
+  const handle=()=>{
+    isAuth=false
+  }
+  // console.log(isAuth)
   return (
     <div id='navbar'>
          <div className="logo">
@@ -108,7 +117,7 @@ export const Navbar = () => {
                   cursor={'pointer'}
                   color={'white'}
                   minW={0} border={0} gap={5}>
-                    Sign In
+                   {isAuth?name:" Sign In" }
                   <Avatar
                     size={'sm'}
                     src={'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR26CmOEGogTfcVSowq0Nw1tA4y3CRGTEZEiROX7GDsCKX5J4eX'}
@@ -127,9 +136,9 @@ export const Navbar = () => {
                   <br />
                   
                   <MenuDivider />
-                   <Link to='/login'><MenuItem> User Login </MenuItem></Link>
+                  {!isAuth&& <Link to='/login'><MenuItem> User Login </MenuItem></Link>}
                   <Link to='/adminlogin'> <MenuItem>Admin Login</MenuItem></Link>
-                  <MenuItem><Link to='/'>Logout</Link></MenuItem>
+                  <MenuItem><Link to='/' onClick={handle} >Logout</Link></MenuItem>
                   
                 </MenuList>
                 
