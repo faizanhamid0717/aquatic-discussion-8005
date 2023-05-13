@@ -7,11 +7,72 @@ import { InputGroup,Text,Input,InputRightAddon ,Box,Icon,Menu,MenuButton,MenuLis
 import { SearchIcon,ArrowForwardIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
 import DarkModeButton from "./ButtonMode";
-import {useSelector,useDispatch} from 'react-redux'
+
+import { useSelector, useDispatch } from "react-redux";
+
+
+
+// const Links = () => {
+// 	return (
+// 		<div>
+// 			{/* <a href="#home" className="link">
+// 				Home
+// 			</a>
+// 			<a href="#skills" className="link">
+// 				Skills
+// 			</a>
+// 			<a href="#about" className="link">
+// 				About me
+// 			</a>
+// 			<a href="#contact" className="link">
+// 				Contact
+// 			</a> */}
+//       <Link to='/cart'>Cart</Link>
+      
+// 		</div>
+// 	);
+// };
+// const Navbar = () => {
+//     const [toggleMenu, setToggleMenu] = React.useState(false)
+// 	return (
+// 		<div className="navbar">
+// 			<div className="title">
+// 				{/* <img src={Logo} alt="logo" /> */}
+//         <Link to="/"> 
+//          <Image width="370px" height="80px" />
+//          </Link>
+// 				<p className="nav__header">Portfolio</p>
+// 			</div>
+
+//       <InputGroup>     
+//          <Image height="55px"  src="https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-home-header.jpg"/>
+//        </InputGroup> 
+
+// 			<div className="links">
+      
+// 				<Links />
+// 			</div>
+// 			<div className="toggle-links" onClick={() => {setToggleMenu(prev => !prev)}}>
+// 				<FiAlignRight className="hamburger-icon" />
+// 			</div>
+// 			{toggleMenu 
+//             ? 
+//             <div className="toggle-menu">
+// 				<Links />
+// 			</div>
+//             : 
+//             <></>}
+// 		</div>
+// 	);
+// };
+// export default Navbar;
+
+
 
 import React, { useState } from 'react'
 
 export const Navbar = () => {
+
 
   // const [searchQuery, setSearchQuery] = useState('');
   // const data=useSelector((store)=>store.productReducer.product)
@@ -26,6 +87,14 @@ export const Navbar = () => {
       console.log('products-nave',data)
 
  
+
+  const [select,setSelect]=useState('')
+  const { isAuth,name } = useSelector((store) => store.authReducer);
+
+  const handle=()=>{
+    isAuth=false
+  }
+  // console.log(isAuth)
   return (
     <>
             <div id='topnav'>
@@ -97,7 +166,7 @@ export const Navbar = () => {
                   cursor={'pointer'}
                   color={'white'}
                   minW={0} border={0} gap={5}>
-                    Sign In
+                   {isAuth?name:" Sign In" }
                   <Avatar
                     size={'sm'}
                     src={'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR26CmOEGogTfcVSowq0Nw1tA4y3CRGTEZEiROX7GDsCKX5J4eX'}
@@ -115,10 +184,16 @@ export const Navbar = () => {
                   <br />
                   <br />
                   
+
+                  <MenuDivider />
+                  {!isAuth&& <Link to='/login'><MenuItem> User Login </MenuItem></Link>}
+                  <Link to='/adminlogin'> <MenuItem>Admin Login</MenuItem></Link>
+                  <MenuItem><Link to='/' onClick={handle} >Logout</Link></MenuItem>
                   {/* <MenuDivider/> */}
                    <Link to='/login'><MenuItem bgColor={'black'} color={'white'} border={'0px'}> User Login </MenuItem></Link> <MenuDivider/>
                   <Link to='/adminlogin'> <MenuItem bgColor={'black'} color={'white'} border={'0px'}>Admin Login</MenuItem></Link><MenuDivider/>
                   <MenuItem bgColor={'black'} color={'white'} border={'0px'}><Link to='/'>Logout</Link></MenuItem>
+
                   
                 </MenuList>
                 

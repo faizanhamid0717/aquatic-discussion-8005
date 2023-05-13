@@ -13,11 +13,13 @@ import Address from "./../Pages/Address";
 import { AdminLogin } from "../Pages/AdminLogin";
 import SingleCard from "./SingleCard";
 import EditProduct from "./EditProduct";
+import Signup from "../Pages/Signup";
 const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/signup" element={<Signup />}></Route>
       <Route path="/adminlogin" element={<AdminLogin />}></Route>
       <Route path="/product" element={<Product />}></Route>
       <Route path="/product/:id" element={<SingleProudctPage />}></Route>
