@@ -1,6 +1,9 @@
 import React from "react";
 import ProductCarousels, {DrawerBeauty, DrawerCategory, DrawerKids, DrawerKitchen, DrawerWomen, ProductSlider, VideoSlider} from "./DrawerHomePage";
 import "./HomePage.css"
+
+
+
 const HomePage = () => {
   return <div>
   
