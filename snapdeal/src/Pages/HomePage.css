@@ -188,8 +188,9 @@
 }
 
 #payment{
-    border: 1px solid red;
-    height: 200px;
+    border-top:1px solid gray; 
+    border-bottom:1px solid gray; 
+    height: 180px;
     width: auto;
      display: flex;
      justify-content: space-around;
@@ -197,21 +198,31 @@
 }
 
 .pay{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     height: 150px;
     width: 600px;
     padding: 10px;
 }
 
+.pay>p{
+    margin-right: 420px;
+    font-weight: 700;
+}
+
 .social{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     height: 150px;
     width: 400px;
     padding: 10px;
 }
 
+.social>p{
+    margin-right: 250px;
+    font-weight: 700;
+}
+
 #sec1{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 50px;
     /* display: grid;
     grid-template-columns: repeat(5,1fr); */

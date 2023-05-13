@@ -1,13 +1,13 @@
 // import React from "react";
 // mongodb+srv://faizan:hamid@cluster0.pxxlzf1.mongodb.net/snapDB?retryWrites=true&w=majority
 import "./Navbar.css";
-// // import Logo from "../../assets/Logo.svg";
-// import { FiAlignRight } from "react-icons/fi";
+
 import { FiShoppingCart } from 'react-icons/fi';
 import { InputGroup,Text,Input,InputRightAddon ,Box,Icon,Menu,MenuButton,MenuList,MenuItem,Button,Avatar,Center,MenuDivider} from "@chakra-ui/react";
 import { SearchIcon,ArrowForwardIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
 import DarkModeButton from "./ButtonMode";
+
 import { useSelector, useDispatch } from "react-redux";
 
 
@@ -68,9 +68,26 @@ import { useSelector, useDispatch } from "react-redux";
 // export default Navbar;
 
 
+
 import React, { useState } from 'react'
 
 export const Navbar = () => {
+
+
+  // const [searchQuery, setSearchQuery] = useState('');
+  // const data=useSelector((store)=>store.productReducer.product)
+
+  // const filteredData = data.filter((item) =>
+  //   item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
+  
+  // const data=useSelector((store)=>console.log('store',store))
+  
+      console.log('products-nave',data)
+
+ 
+
   const [select,setSelect]=useState('')
   const { isAuth,name } = useSelector((store) => store.authReducer);
 
@@ -125,7 +142,9 @@ export const Navbar = () => {
          
          <div className="input">
          <InputGroup mt={'10px'}> 
-        <Input  placeholder= "Search product and brand" type="text" onChange={(e)=>setSelect(e.target.value)}/> 
+        <Input  placeholder= "Search product and brand" type="text" value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+/> 
         <InputRightAddon color={'white'}  backgroundColor={'black'} w={'100px'} paddingLeft={'40px'} children={<SearchIcon/>}/>
         </InputGroup>
           </div>
@@ -183,10 +202,10 @@ export const Navbar = () => {
 
 
          <div className="dark">
-                  <Link to="/cart">
+                 
                   <DarkModeButton />
                   
-                  </Link>
+                  
          </div>
          
     </div>

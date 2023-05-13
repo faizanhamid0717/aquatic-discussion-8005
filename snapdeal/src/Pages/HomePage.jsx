@@ -112,7 +112,7 @@ const HomePage = () => {
 <div id='payment'>
 
     <div className='pay'>
-        <p>PAYMENT</p>
+        <p >PAYMENT</p>
         <div id='sec1'>
            <img height='20px 'width='50px' src='https://64.media.tumblr.com/a76e43f83c87782667ee4cc4ed23af30/ed0d4f3ab28cdeed-8b/s500x750/88e64bf1fa25680b5312bed8a134429d3af5721a.png'/>
            <img width='40px' height='20px'src='https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRq9wFLWLE3uGwpPoSYtTMRxJTej5lIS5CMrbcpDLdIAnUkqRBd'/>
@@ -127,7 +127,7 @@ const HomePage = () => {
         <div id='sec2'>
        <a href='https://www.facebook.com/login/'><img width='50px'src='https://i4.sdlcdn.com/img/footer/facebook@4x.png'/></a> 
        <a href=''> <img width='50px'src='https://i1.sdlcdn.com/img/footer/twitter@4x.png'/></a>
-      <a href=''><img width='50px'src='https://i4.sdlcdn.com/img/footer/instagram@4x.png'/></a>
+      <a href='https://www.instagram.com/accounts/login/'><img width='50px'src='https://i4.sdlcdn.com/img/footer/instagram@4x.png'/></a>
        <a href=''> <img width='50px' src='https://i2.sdlcdn.com/img/footer/linkedin@4x.png'/></a>
         <a href=''><img width='50px'src='https://i1.sdlcdn.com/img/footer/youtube@4x.png'/></a>
         <a href=''><img width='50px'src='https://i4.sdlcdn.com/img/footer/Telegram-Logo_112x112.png'/></a>
