@@ -1,5 +1,4 @@
-// import React from "react";
-// mongodb+srv://faizan:hamid@cluster0.pxxlzf1.mongodb.net/snapDB?retryWrites=true&w=majority
+
 import "./Navbar.css";
 
 import { FiShoppingCart } from 'react-icons/fi';
@@ -8,93 +7,43 @@ import { SearchIcon,ArrowForwardIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
 import DarkModeButton from "./ButtonMode";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 
+import React, { useState,useEffect } from 'react'
+import { getProductFn } from "../redux/productReducer/action";
+export const Navbar = () =>{
 
-
-// const Links = () => {
-// 	return (
-// 		<div>
-// 			{/* <a href="#home" className="link">
-// 				Home
-// 			</a>
-// 			<a href="#skills" className="link">
-// 				Skills
-// 			</a>
-// 			<a href="#about" className="link">
-// 				About me
-// 			</a>
-// 			<a href="#contact" className="link">
-// 				Contact
-// 			</a> */}
-//       <Link to='/cart'>Cart</Link>
-      
-// 		</div>
-// 	);
-// };
-// const Navbar = () => {
-//     const [toggleMenu, setToggleMenu] = React.useState(false)
-// 	return (
-// 		<div className="navbar">
-// 			<div className="title">
-// 				{/* <img src={Logo} alt="logo" /> */}
-//         <Link to="/"> 
-//          <Image width="370px" height="80px" />
-//          </Link>
-// 				<p className="nav__header">Portfolio</p>
-// 			</div>
-
-//       <InputGroup>     
-//          <Image height="55px"  src="https://assets.ajio.com/cms/AJIO/WEB/060123-D-UHP-home-header.jpg"/>
-//        </InputGroup> 
-
-// 			<div className="links">
-      
-// 				<Links />
-// 			</div>
-// 			<div className="toggle-links" onClick={() => {setToggleMenu(prev => !prev)}}>
-// 				<FiAlignRight className="hamburger-icon" />
-// 			</div>
-// 			{toggleMenu 
-//             ? 
-//             <div className="toggle-menu">
-// 				<Links />
-// 			</div>
-//             : 
-//             <></>}
-// 		</div>
-// 	);
-// };
-// export default Navbar;
-
-
-
-import React, { useState } from 'react'
-
-export const Navbar = () => {
-
-
-  // const [searchQuery, setSearchQuery] = useState('');
-  // const data=useSelector((store)=>store.productReducer.product)
-
-  // const filteredData = data.filter((item) =>
-  //   item.name.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
-
-  
-  // const data=useSelector((store)=>console.log('store',store))
-  
-      console.log('products-nave',data)
-
- 
-
-  const [select,setSelect]=useState('')
+  const [term, setTerm] = useState("");
   const { isAuth,name } = useSelector((store) => store.authReducer);
 
   const handle=()=>{
     isAuth=false
   }
   // console.log(isAuth)
+
+  
+  const dispatch = useDispatch();
+  const submitHandler = (e) => {
+    e.preventDefault();
+   
+    
+    setTerm("");
+    console.log(term)
+  };
+
+  useEffect(() => {
+    let obj = {
+      params: {}
+    }
+    
+    if (term) {
+      obj.params.q = term;
+    }
+    dispatch(getProductFn(obj))
+   
+  }, [term])
+
   return (
     <>
             <div id='topnav'>
@@ -142,10 +91,8 @@ export const Navbar = () => {
          
          <div className="input">
          <InputGroup mt={'10px'}> 
-        <Input  placeholder= "Search product and brand" type="text" value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-/> 
-        <InputRightAddon color={'white'}  backgroundColor={'black'} w={'100px'} paddingLeft={'40px'} children={<SearchIcon/>}/>
+        <Input  placeholder= "Search product and brand" type="text" value={term} onChange={(e) => setTerm(e.target.value)}/> 
+        <InputRightAddon color={'white'}  backgroundColor={'black'} w={'100px'} paddingLeft={'40px'} children={<SearchIcon/>} onClick={submitHandler}/>
         </InputGroup>
           </div>
 
@@ -186,10 +133,7 @@ export const Navbar = () => {
                   
 
                   <MenuDivider />
-                  {!isAuth&& <Link to='/login'><MenuItem> User Login </MenuItem></Link>}
-                  <Link to='/adminlogin'> <MenuItem>Admin Login</MenuItem></Link>
-                  <MenuItem><Link to='/' onClick={handle} >Logout</Link></MenuItem>
-                  {/* <MenuDivider/> */}
+                 
                    <Link to='/login'><MenuItem bgColor={'black'} color={'white'} border={'0px'}> User Login </MenuItem></Link> <MenuDivider/>
                   <Link to='/adminlogin'> <MenuItem bgColor={'black'} color={'white'} border={'0px'}>Admin Login</MenuItem></Link><MenuDivider/>
                   <MenuItem bgColor={'black'} color={'white'} border={'0px'}><Link to='/'>Logout</Link></MenuItem>

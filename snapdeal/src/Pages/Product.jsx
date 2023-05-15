@@ -19,6 +19,7 @@ const Product = () => {
   const [searchParam,setSearchParam]=useSearchParams()
   const [order,setOrder]=useState('')
   const [selectedColors,setSelectedColors]=useState('')
+ 
 
   const data=useSelector((store)=>store.productReducer.product
   )
@@ -77,9 +78,13 @@ useEffect(() => {
   if (selectedColors.length > 0) {
     obj.params.color = selectedColors.join(',');
   }
+  
 
+  // dispatch(getProductFn(category))
   dispatch(getProductFn(obj))
+ 
 }, [order,selectedColors])
+
 
 
 
