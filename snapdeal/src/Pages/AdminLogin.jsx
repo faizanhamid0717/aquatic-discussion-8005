@@ -48,7 +48,6 @@ export const AdminLogin = () => {
             fontSize={"12"}
           >
             Please provide your Admin Email to Login on Snapdeal.
-            eve.holt@reqres.in
           </Text>
           <Input
             value={email}

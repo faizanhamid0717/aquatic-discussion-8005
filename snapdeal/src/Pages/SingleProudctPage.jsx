@@ -168,4 +168,7 @@ const SingleProudctPage = () => {
   );
 };
 
-export default SingleProudctPage;
+export default SingleProudctPage; 
+
+
+

@@ -24,7 +24,7 @@
 }
 
  #navbar{
-    /* border: 1px solid white; */
+    /* border: 5px solid black; */
     height:70px;
     width: auto;
     display:grid;
@@ -133,7 +133,7 @@ margin-top: 3px;
       #navbar{
        
       height:80px;
-      width:950px;
+      width:"100%";
       gap:0px
       }
     
@@ -148,7 +148,7 @@ margin-top: 3px;
     font-size:30px ;
    }
    .input{
-    width:500px;
+    width:100%;
     margin-left: 60px;
     padding-bottom: 10px;
    }

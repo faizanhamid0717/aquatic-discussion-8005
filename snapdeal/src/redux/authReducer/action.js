@@ -3,7 +3,7 @@ import { AUTH_REQUEST_FAILURE, AUTH_REQUEST_PENDING, AUTH_REQUEST_SUCCESS, SIGNU
 
 export const login=(email,password)=>(dispatch)=>{
         dispatch({type:AUTH_REQUEST_PENDING})
-        return axios.post("http://localhost:4500/login",{email,password})
+        return axios.post("https://erin-inquisitive-tuna.cyclic.app/login",{email,password})
         .then((res)=>{
                 // console.log(res.data)
                 dispatch({type:AUTH_REQUEST_SUCCESS,payload:{token:res.data.token,name:res.data.name}})
@@ -15,7 +15,7 @@ export const login=(email,password)=>(dispatch)=>{
 
 export const signup=(payload)=>(dispatch)=>{
         dispatch({type:SIGNUP_REQUEST_PENDING})
-        return axios.post("http://localhost:4500/signup",payload)
+        return axios.post("https://erin-inquisitive-tuna.cyclic.app/signup",payload)
         .then((res)=>{
                 // console.log(res)
                 dispatch({type:SIGNUP_REQUEST_SUCCESS,payload:res.data.message})

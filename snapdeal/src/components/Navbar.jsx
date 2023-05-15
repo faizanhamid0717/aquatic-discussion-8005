@@ -7,11 +7,14 @@ import { SearchIcon,ArrowForwardIcon } from '@chakra-ui/icons'
 import {Link} from 'react-router-dom'
 import DarkModeButton from "./ButtonMode";
 
+
 import { useSelector} from "react-redux";
 import { useDispatch } from "react-redux";
 
+import React, { useState } from 'react'
 import React, { useState,useEffect } from 'react'
 import { getProductFn } from "../redux/productReducer/action";
+  
 export const Navbar = () =>{
 
   const [term, setTerm] = useState("");
@@ -133,10 +136,13 @@ export const Navbar = () =>{
                   
 
                   <MenuDivider />
+
+                  {!isAuth&& <Link to='/login'><MenuItem bgColor={'black'} color={'white'} border={'0px'}> User Login </MenuItem></Link>}
+                  <Link to='/adminlogin'> <MenuItem bgColor={'black'} color={'white'} border={'0px'}>Admin Login</MenuItem></Link>
+                  <MenuItem  bgColor={'black'} color={'white'} border={'0px'}><Link to='/' onClick={handle} >Logout</Link></MenuItem>
                  
-                   <Link to='/login'><MenuItem bgColor={'black'} color={'white'} border={'0px'}> User Login </MenuItem></Link> <MenuDivider/>
-                  <Link to='/adminlogin'> <MenuItem bgColor={'black'} color={'white'} border={'0px'}>Admin Login</MenuItem></Link><MenuDivider/>
-                  <MenuItem bgColor={'black'} color={'white'} border={'0px'}><Link to='/'>Logout</Link></MenuItem>
+                  {/* <MenuDivider/> */}
+
 
                   
                 </MenuList>

@@ -6,7 +6,7 @@ import {
   Flex,
   Heading,
   Image,
-
+  Box,
   Stack,
   Text,
   useColorModeValue,
@@ -68,7 +68,7 @@ const Cart = () => {
   ) : error ? (
     ""
   ) : (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)" }}>
+    <Box display= "grid" gridTemplateColumns={{sm:"repeat(1,1fr)",md:"repeat(2,1fr)"}} >
       <div
         style={{
           display: "grid",
@@ -80,19 +80,21 @@ const Cart = () => {
         {state&&state?.map((item) => (
           <Center py={6} key={item.id}>
             <Stack
+              // border={"2px solid black"}
               borderWidth="1px"
               borderRadius="lg"
-              w={{ sm: "100%", md: "740px" }}
-              height={{ sm: "476px", md: "20rem" }}
+              w={{ sm: "90%", md: "740px" }}
+              // height={{ sm: "476px", md: "20rem" }}
               direction={{ base: "column", md: "row" }}
               // bg={useColorModeValue('white', 'gray.900')}
               boxShadow={"l"}
               padding={4}
             >
-              <Flex flex={1} bg="blue.200">
+              <Flex flex={1} >
                 <Image
-                  objectFit="cover"
-                  boxSize="100%"
+                margin={"auto"}
+                  // objectFit="cover"
+                  boxSize="90%"
                   // src={
                   //   'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
                   // }
@@ -243,7 +245,7 @@ const Cart = () => {
           </Center>
         ))}
       </div>
-      <div style={{ width: "400px", marginTop: "25px" }}>
+      <div style={{margin:"auto", width: "400px", marginTop: "25px" }}>
         <Text fontSize={"4xl"}>#FASHION-INSIDER</Text>
         <Text fontSize={"2xl"} color={"#FFA726 "}>
           Bag Summary
@@ -298,7 +300,7 @@ const Cart = () => {
         </Link>
         {/* {redirectToPayment && <Navigate to="/checkout" />} */}
       </div>
-    </div>
+    </Box>
   );
 };
 
