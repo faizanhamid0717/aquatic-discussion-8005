@@ -4,7 +4,7 @@
   - this is clone of snapdeal where we mock this website using the following tech stack user can login and buy the products
 # Deployed Link
 
-- https://quiet-pastelito-b6e8f1.netlify.app/
+- https://marvelous-dieffenbachia-ed52a2.netlify.app
 
 # Team Members
 
