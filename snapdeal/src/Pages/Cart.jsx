@@ -53,7 +53,7 @@ const Cart = () => {
 
   const handleDelete=(id)=>{
     dispatch(deleteCartFn(id))
-    .then(()=>getCartFn())
+    .then(()=>dispatch(getCartFn()))
   }
 
   if(!isAuth)
