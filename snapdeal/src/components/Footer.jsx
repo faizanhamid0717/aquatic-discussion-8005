@@ -57,8 +57,9 @@ const ListHeader = ({ children }) => {
 export const Footer=()=> {
   return (
     <Box
+      // border="1px solid black"
       p="50px 0px"
-      mt="100px"
+      mt={{base:"30px",md:"100px"}}
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={10}>

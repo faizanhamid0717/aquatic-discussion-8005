@@ -29,10 +29,11 @@ const data = {
 
 function ProductCart({ title, price, image, category, rating, id }) {
   return (
-    <div id='proCard'>
-      <Flex p={1} alignItems="center" justifyContent="center">
+    <div id='proCard' >
+      <Flex p={1} width={"100%"} alignItems="center" justifyContent="center"  >
         <Link to={`/product/${id}`}>
           <Box
+          
             bg={useColorModeValue("white", "gray.800")}
             w="200px"
             h={"350px"}
