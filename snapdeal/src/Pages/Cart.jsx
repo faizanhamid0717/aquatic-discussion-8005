@@ -68,22 +68,22 @@ const Cart = () => {
   ) : error ? (
     ""
   ) : (
-    <Box display= "grid" gridTemplateColumns={{sm:"repeat(1,1fr)",md:"repeat(2,1fr)"}} >
+    <Box display= "grid" gridTemplateColumns={{sm:"repeat(1,1fr)",lg:"repeat(2,1fr)"}} >
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(1,1fr)",
           gap: "50px",
-          width: "800px",
+          // width: "800px",
         }}
       >
         {state&&state?.map((item) => (
-          <Center py={6} key={item.id}>
+          <Center py={3} key={item.id}>
             <Stack
               // border={"2px solid black"}
               borderWidth="1px"
               borderRadius="lg"
-              w={{ sm: "90%", md: "740px" }}
+              w={{base:"70%", sm: "70%", md: "70%" }}
               // height={{ sm: "476px", md: "20rem" }}
               direction={{ base: "column", md: "row" }}
               // bg={useColorModeValue('white', 'gray.900')}
@@ -94,7 +94,8 @@ const Cart = () => {
                 <Image
                 margin={"auto"}
                   // objectFit="cover"
-                  boxSize="90%"
+                  // boxSize="70%"
+                  width={"90%"}
                   // src={
                   //   'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
                   // }
@@ -109,7 +110,7 @@ const Cart = () => {
                 p={1}
                 pt={2}
               >
-                <Heading fontSize={"2xl"} fontFamily={"body"}>
+                <Heading fontSize={20} fontFamily={"body"}>
                   {item.title}
                 </Heading>
                 <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
@@ -166,7 +167,7 @@ const Cart = () => {
                   justifyContent={"space-between"}
                   alignItems={"center"}
                 >
-                  <Button
+                  {/* <Button
                     flex={1}
                     size="sm"
                     colorScheme="teal"
@@ -197,8 +198,8 @@ const Cart = () => {
                     }}
                   >
                     {item.qty}
-                  </Button>
-                  <Button
+                  </Button> */}
+                  {/* <Button
                     flex={1}
                     size="sm"
                     colorScheme="teal"
@@ -214,7 +215,7 @@ const Cart = () => {
                     // }
                   >
                     +
-                  </Button>
+                  </Button> */}
                   <Button
                     flex={1}
                     fontSize={"sm"}
@@ -245,7 +246,7 @@ const Cart = () => {
           </Center>
         ))}
       </div>
-      <div style={{margin:"auto", width: "400px", marginTop: "25px" }}>
+      <Box border={"1px solid black"} margin="auto"  width="80%" marginTop="25px" >
         <Text fontSize={"4xl"}>#FASHION-INSIDER</Text>
         <Text fontSize={"2xl"} color={"#FFA726 "}>
           Bag Summary
@@ -299,7 +300,7 @@ const Cart = () => {
           </Button>
         </Link>
         {/* {redirectToPayment && <Navigate to="/checkout" />} */}
-      </div>
+      </Box>
     </Box>
   );
 };

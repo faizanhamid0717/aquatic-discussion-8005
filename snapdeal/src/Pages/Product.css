@@ -51,11 +51,11 @@
 
 #body{
     /* border: 1px solid green; */
-    width: auto;
+    /* width: auto; */
     height: auto;
-    margin: 20px;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+    /* margin: 20px; */
+    display: flex;
+   direction :"row";
 }
 
 #filter{
@@ -72,10 +72,10 @@
     /* border: 1px solid rgb(227, 14, 50); */
     /* border-left: 2px solid rgb(167, 43, 43); */
 
-    width: auto;
+    /* width: ; */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: grid;
-    grid-template-columns: repeat(4,230px);
+    grid-template-columns: repeat(5,1fr);
     margin-right: 10px;
     
     
@@ -85,7 +85,7 @@
 @media screen and (min-width:300px) and (max-width:1000px){
     #product{
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(1,1fr);
       
       height:auto;
       width: 500px;
@@ -94,22 +94,22 @@
 
 #sort{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    /* border: 1px solid red; */
-    display: grid;
-      grid-template-columns: repeat(2,1fr);
+    border: 1px solid red;
+    /* display: grid; */
+      /* grid-template-columns: repeat(2,1fr); */
       /* justify-content: space-evenly; */
-      width: auto;
+      /* width: 100%; */
 
       
 }
 
 @media screen and (min-width:300px) and (max-width:1000px){
-    #sort{
-        display: grid;
-        grid-template-columns: repeat(2,1fr); 
-        height:auto;
-        width: auto;
-    }
+    /* #sort{ */
+        /* display: grid; */
+        /* grid-template-columns: repeat(2,1fr);  */
+        /* height:auto; */
+        /* width: 55%; */
+    /* } */
 }
 
 

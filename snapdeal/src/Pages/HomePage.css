@@ -2,7 +2,7 @@
 
 #home{
      /* border: 1px solid green; */
-     height: 250px;
+     /* height: 250px; */
      display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 10px;
@@ -12,7 +12,7 @@
 
 .drawer{
     /* border: 1px solid red; */
-    width: 65%;
+    width: "30%";
     margin-left: 10px;
     color: rgb(97, 96, 96);
  font-size: smaller;
@@ -32,7 +32,7 @@
 }
 .slido{
     /* border: 1px solid red; */
-    width: 750px;
+    width: 400px;
     height: 270px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 8px;
@@ -43,7 +43,7 @@
     height: 270px;
     color: gray;
     font-size:12px;
-    /* padding: 30px; */
+    /* padding: 5px; */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 5px;
 }
@@ -113,8 +113,11 @@
 
 #proImage{
     /* border: 1px solid red; */
-    height: 450px;
-    margin: 15px;
+    /* height: 450px; */
+    margin: auto;
+    width: 90%;
+    margin-top:20px;
+    margin-bottom: 10px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
 }
@@ -150,8 +153,8 @@
 }
 
 #security{
-    /* border: 1px solid  gray; */
-    height: 215px;
+    border: 10px solid  pink;
+    /* height: 215px; */
     margin: 13px;
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -165,7 +168,7 @@
 
 #security div{
     border: 1px solid gray;
-    height: 200px;
+    height: 210px;
     /* margin: 15px; */
     align-items: center;
     /* width:250px; */
@@ -174,7 +177,7 @@
 }
 
 #security img{
-    margin-left: 110px;
+    margin-left: 30%;
 }
 
 #security h1{
@@ -190,10 +193,10 @@
 #payment{
     border-top:1px solid gray; 
     border-bottom:1px solid gray; 
-    height: 180px;
-    width: auto;
+    /* height: 180px; */
+    /* width: auto; */
      display: flex;
-     justify-content: space-around;
+     /* justify-content: space-around; */
      padding: 20px;
 }
 
@@ -263,6 +266,24 @@
     height:360px;
     /* margin-right: 300px; */
    }
+   #security{
+    /* border: 1px solid  gray; */
+    /* height: 230px; */
+    margin: 13px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 0px;
+}
+    
+    #security div{
+        border: 1px solid gray;
+        height: 240px;
+        /* margin: 15px; */
+        align-items: center;
+        /* width:250px; */
+        /* border-right: 0px; */
+        /* border-left: 0px; */
+    }
 
 
   }
