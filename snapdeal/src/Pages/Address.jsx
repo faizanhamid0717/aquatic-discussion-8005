@@ -16,7 +16,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 const Address = () => {
   const addre = {
     pincode: "",
@@ -30,6 +30,8 @@ const Address = () => {
 
   const [add, setadd] = useState(addre);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate=useNavigate();
+
   const handlechange = (e) => {
     const { name, value } = e.target;
 
@@ -53,6 +55,7 @@ const Address = () => {
     } else {
       localStorage.setItem("address", JSON.stringify(add));
       setadd(addre);
+      navigate("/payment")
     }
   };
   return (
@@ -149,8 +152,8 @@ const Address = () => {
               type="number"
             />
           </Flex>
-          <Link to="/payment">
-            <button
+          
+            <Button
               onClick={handlesubmit}
               style={{
                 marginTop: "32px",
@@ -161,8 +164,8 @@ const Address = () => {
               }}
             >
               SAVE
-            </button>
-          </Link>
+            </Button>
+          
           <AlertDialog isOpen={isOpen} onClose={onClose}>
             <AlertDialogOverlay>
               <AlertDialogContent>
