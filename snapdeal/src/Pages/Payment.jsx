@@ -2,8 +2,12 @@ import { Box, Button, Divider, Flex, Input, Text } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useToast } from "@chakra-ui/react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 const Payment = () => {
+  const navigate=useNavigate()
+
   const state = useSelector((state) => {
     return state.cartReducer.data;
   });
@@ -11,12 +15,12 @@ const Payment = () => {
 
   const handleClick = () => {
     toast({
-      title: "Payment successfully",
+      title: "Payment successfully, Order is placed",
       status: "success",
-      duration: 1000,
+      duration: 4000,
       isClosable: true,
     });
-    <Navigate to={"/"} />;
+    navigate("/");
   };
   let total = 0;
   state.map((el) => {
